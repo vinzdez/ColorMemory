@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ColourMemory</string>
+
+    <!--Label-->
+    <string name="score_label">Score</string>
+    <string name="score_default_value">Score : 0</string>
+
+    <string name="personal_best">Personal Best : </string>
+    <string name="user_name">Enter Name</string>
+    <string name="user_name_warning">Empty Username</string>
+
+    <string name="high_score_rank">Rank</string>
+    <string name="high_score_name">Name</string>
+    <string name="high_score_score">Score</string>
+
+
+</resources>

@@ -1,0 +1,133 @@
+package colourmemory.vicente.com.colourmemory.activity;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.TextView;
+
+import colourmemory.vicente.com.colourmemory.R;
+import colourmemory.vicente.com.colourmemory.adapter.CardAdapter;
+import colourmemory.vicente.com.colourmemory.model.ScoreViewModel;
+import colourmemory.vicente.com.colourmemory.util.AlertManager;
+import colourmemory.vicente.com.colourmemory.view.CardContract;
+import colourmemory.vicente.com.colourmemory.view.Navigator;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
+/**
+ * Created by Vicente on 4/23/2016.
+ */
+public class ColourMemoryFragment extends Fragment implements CardContract.View {
+
+    public static final String COLOUR_MEMORY_FRAGMENT = "colourmemory.vicente.com.colourmemory.activity.ColourMemoryFragment";
+    public static ColourMemoryFragment newInstance() {
+        return new ColourMemoryFragment();
+    }
+
+    private Context context;
+
+    private GridView gridView;
+    private View colourFragView;
+    private TextView textScore;
+
+    private TextView highScore;
+    private Navigator navigator;
+
+    private CardAdapter cardAdapter;
+    private CardContract.Presenter cardPresenter;
+
+
+
+    @NonNull
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (colourFragView == null) {
+            this.context = getActivity();
+            this.colourFragView = inflater.inflate(R.layout.fragment_colour, container, false);
+            this.gridView = (GridView) colourFragView.findViewById(R.id.gridview);
+            this.textScore = (TextView) colourFragView.findViewById(R.id.score);
+            this.cardAdapter = new CardAdapter(context, this);
+            this.highScore = (TextView) colourFragView.findViewById(R.id.id_link_score);
+
+        }
+
+        return colourFragView;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        highScore.setOnClickListener(new HighScoreListener());
+        reshuffleCards();
+        gridView.setAdapter(cardAdapter);
+    }
+
+
+    @Override
+    public void updateScoreBoard(String score) {
+        textScore.setText(getString(R.string.score_label) + ":  " + score);
+    }
+
+    @Override
+    public void showUserInputDialog(int score) {
+        LayoutInflater layoutInflaterAndroid = LayoutInflater.from(context);
+        View dialogView = layoutInflaterAndroid.inflate(R.layout.user_input_dialog_box, null);
+        TextView dialogTitle = (TextView) dialogView.findViewById(R.id.dialogTitle);
+        dialogTitle.setText(dialogTitle.getText() + " " + String.valueOf(score));
+        EditText userInputDialogEditText = (EditText) dialogView.findViewById(R.id.userInputDialog);
+        showAlertDialog(AlertManager.getAlertDialogBuilder(context, dialogView), userInputDialogEditText, score);
+    }
+
+    @Override
+    public void setPresenter(@NonNull CardContract.Presenter presenter) {
+        cardPresenter = checkNotNull(presenter);
+    }
+
+    private void showAlertDialog(AlertDialog.Builder alertDialogBuilderUserInput, final EditText userInputDialogEditText, final int score) {
+
+        AlertManager.showDialog(alertDialogBuilderUserInput, new AlertManager.ButtonPositiveCallback() {
+            @Override
+            public void onSelect(AlertDialog dialog) {
+                if (TextUtils.isEmpty(userInputDialogEditText.getText())) {
+                    userInputDialogEditText.setError(getString(R.string.user_name_warning));
+                } else {
+                    cardPresenter.saveScore(new ScoreViewModel(userInputDialogEditText.getText().toString(), score));
+                    userInputDialogEditText.setError(null);
+                    getNavigator().switchFragment();
+                    dialog.dismiss();
+                }
+            }
+        });
+    }
+
+    private void reshuffleCards() {
+        cardPresenter.shuffleCards();
+        cardAdapter.setCards(cardPresenter.getCards());
+    }
+
+    public Navigator getNavigator() {
+        return navigator;
+    }
+
+    public void setNavigator(Navigator navigator) {
+        this.navigator = navigator;
+    }
+
+    public class HighScoreListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            getNavigator().switchFragment();
+        }
+    }
+}
