@@ -3,12 +3,10 @@ package colourmemory.vicente.com.colourmemory.activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -30,6 +28,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class ColourMemoryFragment extends Fragment implements CardContract.View {
 
     public static final String COLOUR_MEMORY_FRAGMENT = "colourmemory.vicente.com.colourmemory.activity.ColourMemoryFragment";
+
     public static ColourMemoryFragment newInstance() {
         return new ColourMemoryFragment();
     }
@@ -40,12 +39,11 @@ public class ColourMemoryFragment extends Fragment implements CardContract.View 
     private View colourFragView;
     private TextView textScore;
 
-    private TextView highScore;
+
     private Navigator navigator;
 
     private CardAdapter cardAdapter;
     private CardContract.Presenter cardPresenter;
-
 
 
     @NonNull
@@ -57,21 +55,11 @@ public class ColourMemoryFragment extends Fragment implements CardContract.View 
             this.gridView = (GridView) colourFragView.findViewById(R.id.gridview);
             this.textScore = (TextView) colourFragView.findViewById(R.id.score);
             this.cardAdapter = new CardAdapter(context, this);
-            this.highScore = (TextView) colourFragView.findViewById(R.id.id_link_score);
-
         }
-
-        return colourFragView;
-    }
-
-    @Override
-    public void onResume(){
-        super.onResume();
-        highScore.setOnClickListener(new HighScoreListener());
         reshuffleCards();
         gridView.setAdapter(cardAdapter);
+        return colourFragView;
     }
-
 
     @Override
     public void updateScoreBoard(String score) {
@@ -94,7 +82,6 @@ public class ColourMemoryFragment extends Fragment implements CardContract.View 
     }
 
     private void showAlertDialog(AlertDialog.Builder alertDialogBuilderUserInput, final EditText userInputDialogEditText, final int score) {
-
         AlertManager.showDialog(alertDialogBuilderUserInput, new AlertManager.ButtonPositiveCallback() {
             @Override
             public void onSelect(AlertDialog dialog) {
@@ -103,7 +90,7 @@ public class ColourMemoryFragment extends Fragment implements CardContract.View 
                 } else {
                     cardPresenter.saveScore(new ScoreViewModel(userInputDialogEditText.getText().toString(), score));
                     userInputDialogEditText.setError(null);
-                    getNavigator().switchFragment();
+                    getNavigator().showHighScore();
                     dialog.dismiss();
                 }
             }
@@ -123,11 +110,4 @@ public class ColourMemoryFragment extends Fragment implements CardContract.View 
         this.navigator = navigator;
     }
 
-    public class HighScoreListener implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-            getNavigator().switchFragment();
-        }
-    }
 }

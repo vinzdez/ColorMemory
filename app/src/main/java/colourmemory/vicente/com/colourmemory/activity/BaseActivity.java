@@ -24,7 +24,7 @@ public class BaseActivity extends AppCompatActivity implements Navigator {
     }
 
     @Override
-    public void switchFragment() {
+    public void showHighScore() {
         String tag = ColourHighScoreFragment.COLOUR_HIGH_SCORE_FRAGMENT;
         ColourHighScoreFragment colourHighScoreFragment = ColourHighScoreFragment.newInstance();
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), colourHighScoreFragment, tag);
@@ -38,8 +38,10 @@ public class BaseActivity extends AppCompatActivity implements Navigator {
         String contentDescription = String.valueOf(!hadContentDescription ? toolbar.getLogoDescription() : "logoContentDescription");
         toolbar.setLogoDescription(contentDescription);
         ArrayList<View> potentialViews = new ArrayList<>();
+
         //find the view based on it's content description, set programatically or with android:contentDescription
         toolbar.findViewsWithText(potentialViews, contentDescription, View.FIND_VIEWS_WITH_CONTENT_DESCRIPTION);
+
         //Nav icon is always instantiated at this point because calling setLogoDescription ensures its existence
         View logoIcon = null;
         if (potentialViews.size() > 0) {
@@ -56,8 +58,6 @@ public class BaseActivity extends AppCompatActivity implements Navigator {
         ColourMemoryFragment colourMemoryFragment = ColourMemoryFragment.newInstance();
         colourMemoryFragment.setNavigator(this);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), colourMemoryFragment, tag);
-
-
         CardPresenter cardPresenter = new CardPresenter(colourMemoryFragment, new ScoreService(this));
     }
 

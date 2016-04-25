@@ -3,6 +3,8 @@ package colourmemory.vicente.com.colourmemory.activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import colourmemory.vicente.com.colourmemory.R;
@@ -16,14 +18,24 @@ public class ColourMemoryActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colour_memory);
-    }
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
         initToolBar();
         showColourMemoryFragment();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case R.id.id_menu_high_score:
+                showHighScore();
+                return true;
+            default: return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

@@ -6,35 +6,22 @@
     android:weightSum="1">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="56dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingBottom="6dip"
+        android:paddingBottom="15dip"
         android:paddingTop="4dip"
         android:textSize="13sp"
-        android:weightSum="1.0"
-        android:layout_weight="0.11">
+        android:weightSum="1.0">
 
         <TextView
             android:id="@+id/score"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".60"
             android:paddingTop="18dp"
-            android:gravity="end"
             android:text="@string/score_default_value"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/id_link_score"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".55"
-            android:gravity="end"
-            android:drawableBottom="@drawable/highscore"
-            android:paddingBottom="40dp"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:gravity="center_horizontal" />
 
     </LinearLayout>
 

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
@@ -19,6 +21,7 @@ import colourmemory.vicente.com.colourmemory.view.CardContract;
  * Created by Vicente on 4/23/2016.
  */
 public class CardAdapter extends BaseAdapter {
+
 
     private ViewHolder holder;
     private Map<Integer, Card> cardMap;
@@ -37,6 +40,7 @@ public class CardAdapter extends BaseAdapter {
         this.context = context;
         this.allowFutureClick = true;
         this.cardViewAction = cardViewAction;
+
     }
 
     @Override
@@ -83,70 +87,118 @@ public class CardAdapter extends BaseAdapter {
         this.cards = cards;
     }
 
-    class ImageViewListener implements View.OnClickListener {
+
+    public class ImageViewListener implements View.OnClickListener, Animation.AnimationListener, Runnable {
 
         private int currentPosition;
 
+        private Animation frontAnumation;
+        private Animation backAnimation;
+
+        private Card currentCard;
+        private Card previousCard;
+
         public ImageViewListener(int currentPosition) {
             this.currentPosition = currentPosition;
-
+            this.frontAnumation = AnimationUtils.loadAnimation(context, R.anim.to_left);
+            this.backAnimation = AnimationUtils.loadAnimation(context, R.anim.to_right);
         }
 
         @Override
         public void onClick(View v) {
+            frontAnumation.setAnimationListener(this);
+            backAnimation.setAnimationListener(this);
+            handleImageClick();
+        }
 
+        /**
+         * Check Previous and Current Card Equality
+         * Update Score Bored
+         * Calls a callback to HighScore if game has ended
+         */
+        @Override
+        public void run() {
+            checkCardEquality();
+            cardViewAction.updateScoreBoard(String.valueOf(score));
+            if (isGameEnded()) {
+                cardViewAction.showUserInputDialog(score);
+            } else {
+                allowFutureClick = true;
+            }
+        }
 
-            final Card currentCard = getItem(currentPosition);
-            //stop user to click initial card
+        @Override
+        public void onAnimationStart(Animation animation) {
+            if (animation == frontAnumation) {
+
+                if (currentCard.isCardInitialyClick() && allowFutureClick) {
+                    //shows the first card
+                    showImageView(currentCard.getImageView(), currentPosition);
+                } else if (!currentCard.isCardInitialyClick() && !allowFutureClick) {
+                    //shows the second card
+                    showImageView(currentCard.getImageView(), currentPosition);
+                } else if (!previousCard.isVisible()) {
+                    //if both card are not equal
+                    showDeafaultImage(previousCard.getImageView());
+                    showDeafaultImage(currentCard.getImageView());
+                    previousCard.getImageView().clearAnimation();
+                    previousCard.getImageView().setAnimation(backAnimation);
+                    previousCard.getImageView().startAnimation(backAnimation);
+                }
+                currentCard.getImageView().clearAnimation();
+                currentCard.getImageView().setAnimation(backAnimation);
+                currentCard.getImageView().startAnimation(backAnimation);
+
+            }
+        }
+
+        @Override
+        public void onAnimationEnd(Animation animation) {}
+
+        @Override
+        public void onAnimationRepeat(Animation animation) {}
+
+        /**
+         * Calculate's card to show or not
+         */
+        public void handleImageClick() {
+            this.currentCard = getItem(currentPosition);
+
+            //stop user to click initial card, and while evaluating card equality
             if (!currentCard.isCardInitialyClick() && allowFutureClick) {
-                final ImageView currentCardImage = currentCard.getImageView();
+                ImageView currentCardImage = currentCard.getImageView();
+                animateCard(currentCardImage);
 
-                showImageView(currentCardImage, currentPosition);
                 for (int i = 0; i <= getCount(); i++) {
+
                     //if i reached max count, set card as visible, current card is first click
                     if (i == getCount()) {
                         currentCard.setVisible(true);
                         break;
                     }
 
-                    final Card initialCard = getItem(i);
-                    if (initialCard.isCardInitialyClick()) {
+                    this.previousCard = getItem(i);
+                    if (previousCard.isCardInitialyClick()) {
                         allowFutureClick = false;
-                        showImageView(initialCard.getImageView(), initialCard.getPosition());
-
-                        currentCardImage.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                checkCardEquality(initialCard, currentCard);
-                                cardViewAction.updateScoreBoard(String.valueOf(score));
-                                if (isGameEnded()) {
-                                    cardViewAction.showUserInputDialog(score);
-                                } else {
-                                    allowFutureClick = true;
-                                }
-
-                            }
-                        }, 1000);
+                        currentCardImage.postDelayed(this, 1000);
                         break;
                     }
                 }
             }
-
         }
-
 
         private boolean isGameEnded() {
             return (gameSpan * 2) == getCount();
         }
 
-        private void checkCardEquality(Card initialCard, Card currentCard) {
-            if (getCards().get(initialCard.getPosition()).equals(getCards().get(currentPosition))) {
+        private void checkCardEquality() {
+            if (getCards().get(previousCard.getPosition()).equals(getCards().get(currentPosition))) {
                 //Disable card
-                initialCard.setDisabled(true);
+                previousCard.setDisabled(true);
                 currentCard.setDisabled(true);
 
                 //Disable card
-                initialCard.getImageView().setClickable(false);
+                previousCard.getImageView().setClickable(false);
                 currentCard.getImageView().setClickable(false);
 
                 //Add 2 points
@@ -155,14 +207,25 @@ public class CardAdapter extends BaseAdapter {
             } else {
                 //Card no longer the firs card click
                 currentCard.setVisible(false);
-                initialCard.setVisible(false);
+                previousCard.setVisible(false);
 
-                showDeafaultImage(currentCard.getImageView());
-                showDeafaultImage(initialCard.getImageView());
+                animateCard(previousCard.getImageView());
                 //Minus 1 point
                 score -= 1;
             }
         }
+
+        /**
+         * Start Animation
+         *
+         * @param imageView
+         */
+        private void animateCard(ImageView imageView) {
+            imageView.clearAnimation();
+            imageView.setAnimation(frontAnumation);
+            imageView.startAnimation(frontAnumation);
+        }
+
 
         private void showDeafaultImage(ImageView imageView) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -179,12 +242,12 @@ public class CardAdapter extends BaseAdapter {
                 imageView.setImageDrawable(context.getResources().getDrawable(getCards().get(index)));
             }
         }
+
+
     }
+
 
     static class ViewHolder {
         ImageView image;
     }
 }
-
-
-

@@ -15,6 +15,7 @@
             android:id="@+id/id_high_score_rank"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_weight=".20"
             android:gravity="center"
             android:textColor="@color/cardview_light_background"
@@ -24,6 +25,7 @@
         <TextView
             android:id="@+id/id_high_score_name"
             android:layout_width="0dp"
+            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
             android:layout_weight=".60"
             android:textColor="@color/cardview_light_background"
@@ -35,6 +37,7 @@
         <TextView
             android:id="@+id/id_high_score"
             android:layout_width="0dp"
+            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
             android:layout_weight=".20"
             android:textColor="@color/cardview_light_background"

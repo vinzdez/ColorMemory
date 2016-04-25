@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -50,6 +52,16 @@ public class ColourHighScoreFragment extends Fragment implements HighScoreContra
         return highScoreView;
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.id_menu_high_score).setVisible(false);
+    }
     @Override
     public void showHighScore() {
         highScoreAdapter.setScoreList(highScorePresenter.getAllScore());

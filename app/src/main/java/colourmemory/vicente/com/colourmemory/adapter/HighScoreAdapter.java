@@ -35,7 +35,7 @@ public class HighScoreAdapter extends RecyclerView.Adapter<HighScoreAdapter.MyVi
     @Override
     public void onBindViewHolder(HighScoreAdapter.MyViewHolder holder, int position) {
         ScoreViewModel score = getScoreList().get(position);
-        holder.rank.setText(String.valueOf(score.getRank()));
+        holder.rank.setText(String.valueOf(score.getRank() + 1));
         holder.name.setText(score.getName());
         holder.score.setText(String.valueOf(score.getScore()));
     }
