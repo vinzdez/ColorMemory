@@ -52,9 +52,9 @@ public class ColourMemoryActivity extends BaseActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.drawable.logo);
+      /*  toolbar.setLogo(R.drawable.logo);
         View logoView = getToolbarLogoIcon(toolbar);
-        logoView.setOnClickListener(new LocgoClickListener());
+        logoView.setOnClickListener(new LocgoClickListener());*/
         setSupportActionBar(toolbar);
     }
 

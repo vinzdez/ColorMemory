@@ -13,10 +13,10 @@ import colourmemory.vicente.com.colourmemory.R;
  */
 public class CardUtil {
 
-    private static final int[] cards = new int[]{R.drawable.colour1, R.drawable.colour2, R.drawable.colour3, R.drawable.colour4,
-            R.drawable.colour5, R.drawable.colour6, R.drawable.colour7, R.drawable.colour8, R.drawable.colour1,
-            R.drawable.colour2, R.drawable.colour3, R.drawable.colour4, R.drawable.colour5, R.drawable.colour6,
-            R.drawable.colour7, R.drawable.colour8};
+    private static final int[] cards = new int[]{R.drawable.color1, R.drawable.color2, R.drawable.color3, R.drawable.color4,
+            R.drawable.color5, R.drawable.color6, R.drawable.color7, R.drawable.color8, R.drawable.color1,
+            R.drawable.color2, R.drawable.color3, R.drawable.color4, R.drawable.color5, R.drawable.color6,
+            R.drawable.color7, R.drawable.color8};
 
     public static Map<Integer, Integer> shuffleCards() {
         List<Integer> myArray = new ArrayList<>();
