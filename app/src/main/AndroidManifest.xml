@@ -8,7 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="colormemory.vicente.com.colormemory.activity.ColourMemoryActivity"
+            android:name=".activity.ColorMemoryActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>

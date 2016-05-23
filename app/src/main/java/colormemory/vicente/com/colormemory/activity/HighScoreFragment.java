@@ -20,7 +20,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * Created by Asus on 4/23/2016.
  */
-public class ColourHighScoreFragment extends Fragment implements HighScoreContract.View {
+public class HighScoreFragment extends Fragment implements HighScoreContract.View {
 
     public static final String COLOUR_HIGH_SCORE_FRAGMENT = "colourmemory.vicente.com.colourmemory.activity.COLOUT_HIGH_SCORE_FRAGMENT";
 
@@ -32,8 +32,8 @@ public class ColourHighScoreFragment extends Fragment implements HighScoreContra
 
     private RecyclerView recyclerView;
 
-    public static ColourHighScoreFragment newInstance() {
-        return new ColourHighScoreFragment();
+    public static HighScoreFragment newInstance() {
+        return new HighScoreFragment();
     }
 
     @NonNull

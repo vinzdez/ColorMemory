@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import colormemory.vicente.com.colormemory.R;
 
 
-public class ColourMemoryActivity extends BaseActivity implements FragmentManager.OnBackStackChangedListener {
+public class ColorMemoryActivity extends BaseActivity implements FragmentManager.OnBackStackChangedListener {
 
     private Toolbar toolbar;
 
@@ -43,7 +43,7 @@ public class ColourMemoryActivity extends BaseActivity implements FragmentManage
     @Override
     public void onBackPressed() {
         for (Fragment fragment : getSupportFragmentManager().getFragments()) {
-            if (fragment.isVisible() && ColourHighScoreFragment.COLOUR_HIGH_SCORE_FRAGMENT == fragment.getTag()) {
+            if (fragment.isVisible() && HighScoreFragment.COLOUR_HIGH_SCORE_FRAGMENT == fragment.getTag()) {
                 showColourMemoryFragment();
                 break;
             }
@@ -75,9 +75,9 @@ public class ColourMemoryActivity extends BaseActivity implements FragmentManage
     public void shouldDisplayHomeUp() {
         for (Fragment fragment : getSupportFragmentManager().getFragments()) {
             if ((getSupportActionBar() != null && fragment != null) && fragment.isVisible()) {
-                if (ColourHighScoreFragment.COLOUR_HIGH_SCORE_FRAGMENT == fragment.getTag()) {
+                if (HighScoreFragment.COLOUR_HIGH_SCORE_FRAGMENT == fragment.getTag()) {
                     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                } else if (ColourMemoryFragment.COLOUR_MEMORY_FRAGMENT == fragment.getTag()) {
+                } else if (ColorMemoryFragment.COLOUR_MEMORY_FRAGMENT == fragment.getTag()) {
                     getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                 }
             }

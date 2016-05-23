@@ -7,30 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a35754cf-a6be-4853-86a6-cac8abde394f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/androidTest/java/colourmemory/vicente/com/colourmemory/ApplicationTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/colourmemory/vicente/com/colourmemory/ExampleUnitTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/activity/BaseActivity.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/BaseActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/activity/ColourHighScoreFragment.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColourHighScoreFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/activity/ColourMemoryActivity.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColourMemoryActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/activity/ColourMemoryFragment.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColourMemoryFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/adapter/CardAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/adapter/CardAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/adapter/HighScoreAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/adapter/HighScoreAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/dao/DaoFactory.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/dao/DaoFactory.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/model/Card.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/model/Card.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/model/ScoreViewModel.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/model/ScoreViewModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/model/repo/Score.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/model/repo/Score.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/service/ScoreService.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/service/ScoreService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/util/ActivityUtils.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/util/ActivityUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/util/AlertManager.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/util/AlertManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/util/CardUtil.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/util/CardUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/view/BaseView.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/view/BaseView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/view/CardContract.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/view/CardContract.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/view/CardPresenter.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/view/CardPresenter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/view/HighScoreContract.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/view/HighScoreContract.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/view/HighScorePresenter.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/view/HighScorePresenter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colourmemory/vicente/com/colourmemory/view/Navigator.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/view/Navigator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/BaseActivity.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/BaseActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/res/layout/activity_colour_memory.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_colour_memory.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColourHighScoreFragment.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/HighScoreFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColourMemoryActivity.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColourMemoryFragment.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java" />
     </list>
     <ignored path="app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,8 +33,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ColourMemoryActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColourMemoryActivity.java">
+      <file leaf-file-name="ColorMemoryActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
@@ -61,14 +43,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ColourMemoryFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColourMemoryFragment.java">
+      <file leaf-file-name="ColorMemoryFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="52" selection-start-line="53" selection-start-column="52" selection-end-line="53" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.21684588">
+              <caret line="53" column="68" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="68" />
               <folding>
-                <element signature="e#2224#2255#0" expanded="true" />
-                <element signature="e#3501#3538#0" expanded="true" />
+                <element signature="e#2220#2251#0" expanded="true" />
+                <element signature="e#3497#3534#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -94,18 +76,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CardUtil.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CardUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/util/CardUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56438357">
-              <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ColourHighScoreFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColourHighScoreFragment.java">
+      <file leaf-file-name="HighScoreFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/HighScoreFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="43" column="50" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
@@ -1876,6 +1858,7 @@
         <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/adapter/CardAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/util/ActivityUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/util/CardUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java" />
       </list>
     </option>
   </component>
@@ -2082,6 +2065,252 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="colormemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ColorMemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="colormemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ColorMemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="colormemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ColorMemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="colormemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ColorMemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="colormemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ColorMemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="colormemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ColorMemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="colormemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ColorMemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="colormemory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2368,7 +2597,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -2385,11 +2614,11 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36949924" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36949924" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2415,7 +2644,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColourHighScoreFragment.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/HighScoreFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="43" column="50" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
@@ -2433,22 +2662,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColourMemoryActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColourMemoryFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="52" selection-start-line="53" selection-start-column="52" selection-end-line="53" selection-end-column="52" />
-          <folding>
-            <element signature="e#2224#2255#0" expanded="true" />
-            <element signature="e#3501#3538#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2470,9 +2688,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/util/CardUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56438357">
-          <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_colour.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21684588">
+          <caret line="53" column="68" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="68" />
+          <folding>
+            <element signature="e#2220#2251#0" expanded="true" />
+            <element signature="e#3497#3534#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

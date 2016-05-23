@@ -25,12 +25,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * Created by Vicente on 4/23/2016.
  */
-public class ColourMemoryFragment extends Fragment implements CardContract.View {
+public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
-    public static final String COLOUR_MEMORY_FRAGMENT = "colourmemory.vicente.com.colourmemory.activity.ColourMemoryFragment";
+    public static final String COLOUR_MEMORY_FRAGMENT = "colourmemory.vicente.com.colourmemory.activity.ColorMemoryFragment";
 
-    public static ColourMemoryFragment newInstance() {
-        return new ColourMemoryFragment();
+    public static ColorMemoryFragment newInstance() {
+        return new ColorMemoryFragment();
     }
 
     private Context context;
