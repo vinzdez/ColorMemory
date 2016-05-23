@@ -6,3 +6,5 @@
 .DS_Store
 /build
 /captures
+vinzdez-release-key.keystore
+debug.keystore
