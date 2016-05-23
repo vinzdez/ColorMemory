@@ -7,11 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a35754cf-a6be-4853-86a6-cac8abde394f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_colour.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/BaseActivity.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/BaseActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryActivity.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/res/layout/activity_colour_memory.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_color_memory.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_colour.xml" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_color.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/HighScoreFragment.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/HighScoreFragment.java" />
     </list>
     <ignored path="app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,20 +35,20 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+              <caret line="79" column="51" selection-start-line="79" selection-start-column="51" selection-end-line="79" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ColorMemoryFragment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ColorMemoryFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="1.1881721">
               <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
               <folding>
-                <element signature="e#2219#2250#0" expanded="true" />
-                <element signature="e#3496#3533#0" expanded="true" />
+                <element signature="e#2218#2249#0" expanded="true" />
+                <element signature="e#3495#3532#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,14 +67,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_color.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fragment_color.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_color.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.45328033">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-10.509091">
+              <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -1884,6 +1883,7 @@
         <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/util/ActivityUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/util/CardUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryActivity.java" />
       </list>
     </option>
   </component>
@@ -2744,14 +2744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/adapter/CardAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2776,17 +2768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-          <folding>
-            <element signature="e#2219#2250#0" expanded="true" />
-            <element signature="e#3496#3533#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_color_memory.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -2803,9 +2784,28 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.45328033">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-10.509091">
+          <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="51" selection-start-line="79" selection-start-column="51" selection-end-line="79" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1881721">
+          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+          <folding>
+            <element signature="e#2218#2249#0" expanded="true" />
+            <element signature="e#3495#3532#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

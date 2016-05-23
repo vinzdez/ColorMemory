@@ -18,7 +18,7 @@ public class BaseActivity extends AppCompatActivity implements Navigator {
 
     @Override
     public void showHighScore() {
-        String tag = HighScoreFragment.COLOUR_HIGH_SCORE_FRAGMENT;
+        String tag = HighScoreFragment.COLOR_HIGH_SCORE_FRAGMENT;
         HighScoreFragment highScoreFragment = HighScoreFragment.newInstance();
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), highScoreFragment, tag);
 
@@ -26,7 +26,7 @@ public class BaseActivity extends AppCompatActivity implements Navigator {
     }
 
     public void showColourMemoryFragment() {
-        String tag = ColorMemoryFragment.COLOUR_MEMORY_FRAGMENT;
+        String tag = ColorMemoryFragment.COLOR_MEMORY_FRAGMENT;
         ColorMemoryFragment colorMemoryFragment = ColorMemoryFragment.newInstance();
         colorMemoryFragment.setNavigator(this);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), colorMemoryFragment, tag);

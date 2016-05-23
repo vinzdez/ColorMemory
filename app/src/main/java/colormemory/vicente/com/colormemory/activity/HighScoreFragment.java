@@ -22,7 +22,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class HighScoreFragment extends Fragment implements HighScoreContract.View {
 
-    public static final String COLOUR_HIGH_SCORE_FRAGMENT = "colourmemory.vicente.com.colourmemory.activity.COLOUT_HIGH_SCORE_FRAGMENT";
+    public static final String COLOR_HIGH_SCORE_FRAGMENT = "colourmemory.vicente.com.colourmemory.activity.COLOUT_HIGH_SCORE_FRAGMENT";
 
     private Context context;
 

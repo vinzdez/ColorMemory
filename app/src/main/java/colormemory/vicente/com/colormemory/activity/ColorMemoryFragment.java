@@ -27,7 +27,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
-    public static final String COLOUR_MEMORY_FRAGMENT = "colourmemory.vicente.com.colourmemory.activity.ColorMemoryFragment";
+    public static final String COLOR_MEMORY_FRAGMENT = "colourmemory.vicente.com.colourmemory.activity.ColorMemoryFragment";
 
     public static ColorMemoryFragment newInstance() {
         return new ColorMemoryFragment();

@@ -43,7 +43,7 @@ public class ColorMemoryActivity extends BaseActivity implements FragmentManager
     @Override
     public void onBackPressed() {
         for (Fragment fragment : getSupportFragmentManager().getFragments()) {
-            if (fragment.isVisible() && HighScoreFragment.COLOUR_HIGH_SCORE_FRAGMENT == fragment.getTag()) {
+            if (fragment.isVisible() && HighScoreFragment.COLOR_HIGH_SCORE_FRAGMENT == fragment.getTag()) {
                 showColourMemoryFragment();
                 break;
             }
@@ -75,9 +75,9 @@ public class ColorMemoryActivity extends BaseActivity implements FragmentManager
     public void shouldDisplayHomeUp() {
         for (Fragment fragment : getSupportFragmentManager().getFragments()) {
             if ((getSupportActionBar() != null && fragment != null) && fragment.isVisible()) {
-                if (HighScoreFragment.COLOUR_HIGH_SCORE_FRAGMENT == fragment.getTag()) {
+                if (HighScoreFragment.COLOR_HIGH_SCORE_FRAGMENT == fragment.getTag()) {
                     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                } else if (ColorMemoryFragment.COLOUR_MEMORY_FRAGMENT == fragment.getTag()) {
+                } else if (ColorMemoryFragment.COLOR_MEMORY_FRAGMENT == fragment.getTag()) {
                     getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                 }
             }
