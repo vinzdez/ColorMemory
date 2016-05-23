@@ -17,7 +17,7 @@ public class ColorMemoryActivity extends BaseActivity implements FragmentManager
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_colour_memory);
+        setContentView(R.layout.activity_color_memory);
         initToolBar();
         getSupportFragmentManager().addOnBackStackChangedListener(this);
         showColourMemoryFragment();

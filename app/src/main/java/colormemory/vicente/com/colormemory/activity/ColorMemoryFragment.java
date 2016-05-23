@@ -51,7 +51,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (colourFragView == null) {
             this.context = getActivity();
-            this.colourFragView = inflater.inflate(R.layout.fragment_colour, container, false);
+            this.colourFragView = inflater.inflate(R.layout.fragment_color, container, false);
             this.gridView = (GridView) colourFragView.findViewById(R.id.gridview);
             this.textScore = (TextView) colourFragView.findViewById(R.id.score);
             this.cardAdapter = new CardAdapter(context, this);
