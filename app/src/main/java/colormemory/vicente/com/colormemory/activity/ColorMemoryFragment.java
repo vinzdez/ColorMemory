@@ -36,7 +36,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     private Context context;
 
     private GridView gridView;
-    private View colourFragView;
+    private View colorFragView;
     private TextView textScore;
 
 
@@ -49,16 +49,16 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     @NonNull
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (colourFragView == null) {
+        if (colorFragView == null) {
             this.context = getActivity();
-            this.colourFragView = inflater.inflate(R.layout.fragment_color, container, false);
-            this.gridView = (GridView) colourFragView.findViewById(R.id.gridview);
-            this.textScore = (TextView) colourFragView.findViewById(R.id.score);
+            this.colorFragView = inflater.inflate(R.layout.fragment_color, container, false);
+            this.gridView = (GridView) colorFragView.findViewById(R.id.gridview);
+            this.textScore = (TextView) colorFragView.findViewById(R.id.score);
             this.cardAdapter = new CardAdapter(context, this);
         }
         reshuffleCards();
         gridView.setAdapter(cardAdapter);
-        return colourFragView;
+        return colorFragView;
     }
 
     @Override

@@ -7,10 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a35754cf-a6be-4853-86a6-cac8abde394f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/BaseActivity.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/BaseActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryActivity.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/HighScoreFragment.java" afterPath="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/HighScoreFragment.java" />
     </list>
     <ignored path="app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,11 +41,11 @@
       <file leaf-file-name="ColorMemoryFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1881721">
-              <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+            <state vertical-scroll-proportion="-1.2544802">
+              <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
               <folding>
-                <element signature="e#2218#2249#0" expanded="true" />
-                <element signature="e#3495#3532#0" expanded="true" />
+                <element signature="e#2212#2243#0" expanded="true" />
+                <element signature="e#3489#3526#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1882,8 +1879,8 @@
         <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/adapter/CardAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/util/ActivityUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/util/CardUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java" />
         <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java" />
       </list>
     </option>
   </component>
@@ -2800,11 +2797,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/colormemory/vicente/com/colormemory/activity/ColorMemoryFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1881721">
-          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+        <state vertical-scroll-proportion="-1.2544802">
+          <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
           <folding>
-            <element signature="e#2218#2249#0" expanded="true" />
-            <element signature="e#3495#3532#0" expanded="true" />
+            <element signature="e#2212#2243#0" expanded="true" />
+            <element signature="e#3489#3526#0" expanded="true" />
           </folding>
         </state>
       </provider>
