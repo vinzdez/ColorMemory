@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import colormemory.vicente.com.colormemory.R;
 import colormemory.vicente.com.colormemory.adapter.CardAdapter;
 import colormemory.vicente.com.colormemory.model.ScoreViewModel;
@@ -35,11 +37,12 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
     private Context context;
 
-    private GridView gridView;
+    @BindView(R.id.gridview)
+    GridView gridView;
+    @BindView(R.id.score)
+    TextView textScore;
+
     private View colorFragView;
-    private TextView textScore;
-
-
     private Navigator navigator;
 
     private CardAdapter cardAdapter;
@@ -52,8 +55,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
         if (colorFragView == null) {
             this.context = getActivity();
             this.colorFragView = inflater.inflate(R.layout.fragment_color, container, false);
-            this.gridView = (GridView) colorFragView.findViewById(R.id.gridview);
-            this.textScore = (TextView) colorFragView.findViewById(R.id.score);
+            ButterKnife.bind(this, colorFragView);
             this.cardAdapter = new CardAdapter(context, this);
         }
         reshuffleCards();

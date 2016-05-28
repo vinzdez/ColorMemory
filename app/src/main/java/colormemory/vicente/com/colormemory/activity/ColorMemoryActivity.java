@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import butterknife.ButterKnife;
 import colormemory.vicente.com.colormemory.R;
 
 
@@ -17,6 +18,7 @@ public class ColorMemoryActivity extends BaseActivity implements FragmentManager
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
         setContentView(R.layout.activity_color_memory);
         initToolBar();
         getSupportFragmentManager().addOnBackStackChangedListener(this);

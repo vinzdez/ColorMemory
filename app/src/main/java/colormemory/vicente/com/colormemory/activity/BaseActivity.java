@@ -3,6 +3,7 @@ package colormemory.vicente.com.colormemory.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import butterknife.ButterKnife;
 import colormemory.vicente.com.colormemory.service.ScoreService;
 import colormemory.vicente.com.colormemory.util.ActivityUtils;
 import colormemory.vicente.com.colormemory.view.CardPresenter;
@@ -14,6 +15,7 @@ public class BaseActivity extends AppCompatActivity implements Navigator {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
     }
 
     @Override

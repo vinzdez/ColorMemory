@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import colormemory.vicente.com.colormemory.R;
 import colormemory.vicente.com.colormemory.model.Card;
 import colormemory.vicente.com.colormemory.view.CardContract;
@@ -31,6 +33,10 @@ public class CardAdapter extends BaseAdapter {
     private int gameSpan;
     private int score;
 
+    private Animation frontAnimation;
+    private Animation backAnimation;
+
+
     private CardContract.View cardViewAction;
 
     private boolean allowFutureClick;
@@ -40,6 +46,9 @@ public class CardAdapter extends BaseAdapter {
         this.context = context;
         this.allowFutureClick = true;
         this.cardViewAction = cardViewAction;
+        this.frontAnimation = AnimationUtils.loadAnimation(context, R.anim.to_left);
+        this.backAnimation = AnimationUtils.loadAnimation(context, R.anim.to_right);
+
 
     }
 
@@ -63,8 +72,7 @@ public class CardAdapter extends BaseAdapter {
 
         if (convertView == null) {
             convertView = ((Activity) context).getLayoutInflater().inflate(R.layout.card_layout, parent, false);
-            holder = new ViewHolder();
-            holder.image = (ImageView) convertView.findViewById(R.id.image);
+            holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -87,26 +95,21 @@ public class CardAdapter extends BaseAdapter {
         this.cards = cards;
     }
 
-
     public class ImageViewListener implements View.OnClickListener, Animation.AnimationListener, Runnable {
 
         private int currentPosition;
 
-        private Animation frontAnumation;
-        private Animation backAnimation;
 
         private Card currentCard;
         private Card previousCard;
 
         public ImageViewListener(int currentPosition) {
             this.currentPosition = currentPosition;
-            this.frontAnumation = AnimationUtils.loadAnimation(context, R.anim.to_left);
-            this.backAnimation = AnimationUtils.loadAnimation(context, R.anim.to_right);
         }
 
         @Override
         public void onClick(View v) {
-            frontAnumation.setAnimationListener(this);
+            frontAnimation.setAnimationListener(this);
             backAnimation.setAnimationListener(this);
             handleImageClick();
         }
@@ -129,7 +132,7 @@ public class CardAdapter extends BaseAdapter {
 
         @Override
         public void onAnimationStart(Animation animation) {
-            if (animation == frontAnumation) {
+            if (animation == frontAnimation) {
 
                 if (currentCard.isCardInitialyClick() && allowFutureClick) {
                     //shows the first card
@@ -153,10 +156,12 @@ public class CardAdapter extends BaseAdapter {
         }
 
         @Override
-        public void onAnimationEnd(Animation animation) {}
+        public void onAnimationEnd(Animation animation) {
+        }
 
         @Override
-        public void onAnimationRepeat(Animation animation) {}
+        public void onAnimationRepeat(Animation animation) {
+        }
 
         /**
          * Calculate's card to show or not
@@ -222,8 +227,8 @@ public class CardAdapter extends BaseAdapter {
          */
         private void animateCard(ImageView imageView) {
             imageView.clearAnimation();
-            imageView.setAnimation(frontAnumation);
-            imageView.startAnimation(frontAnumation);
+            imageView.setAnimation(frontAnimation);
+            imageView.startAnimation(frontAnimation);
         }
 
 
@@ -246,8 +251,12 @@ public class CardAdapter extends BaseAdapter {
 
     }
 
-
-    static class ViewHolder {
+    class ViewHolder {
+        @BindView(R.id.image)
         ImageView image;
+
+        public ViewHolder(View itemView) {
+            ButterKnife.bind(this, itemView);
+        }
     }
 }
