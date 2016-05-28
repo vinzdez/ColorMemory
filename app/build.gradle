@@ -33,5 +33,6 @@ dependencies {
     compile "com.android.support:design:$rootProject.supportLibraryVersion"
     compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
     compile "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+    compile "com.jakewharton:butterknife:$rootProject.butterknife"
     compile "com.google.guava:guava:$rootProject.guavaVersion"
 }
