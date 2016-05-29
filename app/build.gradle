@@ -44,6 +44,6 @@ dependencies {
     compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
     compile "com.android.support:support-v4:$rootProject.supportLibraryVersion"
     compile "com.jakewharton:butterknife:$rootProject.butterknife"
-    apt 'com.jakewharton:butterknife-compiler:8.0.1'
+    apt "com.jakewharton:butterknife-compiler:$rootProject.butterknife"
     compile "com.google.guava:guava:$rootProject.guavaVersion"
 }
