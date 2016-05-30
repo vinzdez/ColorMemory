@@ -14,6 +14,8 @@ public interface CardContract {
         void updateScoreBoard(String score);
 
         void showUserInputDialog(int score);
+
+        void showProgressBar();
     }
 
     interface Presenter {

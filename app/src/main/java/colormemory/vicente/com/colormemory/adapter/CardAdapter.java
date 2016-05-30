@@ -3,6 +3,7 @@ package colormemory.vicente.com.colormemory.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -79,10 +80,27 @@ public class CardAdapter extends BaseAdapter {
         }
 
         if (cardMap.get(position) == null) {
+            holder.image.setEnabled(false);
             holder.image.setOnClickListener(new ImageViewListener(position));
             cardMap.put(position, new Card(holder.image, position));
+            showImageView(holder.image, position);
         }
 
+        if (position == (getCount() - 1)) {
+            cardViewAction.showProgressBar();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    for (int key : cardMap.keySet()) {
+                        ImageView imageView = cardMap.get(key).getImageView();
+                        imageView.setEnabled(true);
+                        showDeafaultImage(imageView);
+                    }
+                }
+            }, 5000);
+
+        }
         return convertView;
     }
 
@@ -232,23 +250,22 @@ public class CardAdapter extends BaseAdapter {
         }
 
 
-        private void showDeafaultImage(ImageView imageView) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                imageView.setImageDrawable(context.getDrawable(R.drawable.card_bg));
-            } else {
-                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.card_bg));
-            }
+    }
+
+    private void showDeafaultImage(ImageView imageView) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            imageView.setImageDrawable(context.getDrawable(R.drawable.card_bg));
+        } else {
+            imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.card_bg));
         }
+    }
 
-        private void showImageView(ImageView imageView, int index) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                imageView.setImageDrawable(context.getDrawable(getCards().get(index)));
-            } else {
-                imageView.setImageDrawable(context.getResources().getDrawable(getCards().get(index)));
-            }
+    private void showImageView(ImageView imageView, int index) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            imageView.setImageDrawable(context.getDrawable(getCards().get(index)));
+        } else {
+            imageView.setImageDrawable(context.getResources().getDrawable(getCards().get(index)));
         }
-
-
     }
 
     class ViewHolder {

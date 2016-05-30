@@ -3,6 +3,7 @@ package colormemory.vicente.com.colormemory.activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -11,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -42,12 +45,16 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     @BindView(R.id.score)
     TextView textScore;
 
+    @BindView(R.id.progressbar_layout)
+    LinearLayout linearLayout;
+    @BindView(R.id.progressbar)
+    ProgressBar progressBar;
+
     private View colorFragView;
     private Navigator navigator;
 
     private CardAdapter cardAdapter;
     private CardContract.Presenter cardPresenter;
-
 
     @NonNull
     @Override
@@ -76,6 +83,14 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
         dialogTitle.setText(dialogTitle.getText() + " " + String.valueOf(score));
         EditText userInputDialogEditText = (EditText) dialogView.findViewById(R.id.userInputDialog);
         showAlertDialog(AlertManager.getAlertDialogBuilder(context, dialogView), userInputDialogEditText, score);
+    }
+
+    @Override
+    public void showProgressBar() {
+        linearLayout.setVisibility(View.VISIBLE);
+        progressBar.setProgress(100);
+        MyCountDownTimer myCountDownTimer = new MyCountDownTimer(5000,500);
+        myCountDownTimer.start();
     }
 
     @Override
@@ -110,6 +125,26 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
     public void setNavigator(Navigator navigator) {
         this.navigator = navigator;
+    }
+
+    public class MyCountDownTimer extends CountDownTimer {
+
+        public MyCountDownTimer(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            int progress = (int) (millisUntilFinished / 50);
+            progressBar.setProgress(progress);
+        }
+
+        @Override
+        public void onFinish() {
+            linearLayout.setVisibility(View.GONE);
+            progressBar.setProgress(0);
+        }
+
     }
 
 }
