@@ -72,7 +72,8 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
     @Override
     public void updateScoreBoard(String score) {
-        textScore.setText(getString(R.string.score_label) + ":  " + score);
+        String value = getString(R.string.score_label).concat(": ").concat(score);
+        textScore.setText(value);
     }
 
     @Override
@@ -80,7 +81,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
         LayoutInflater layoutInflaterAndroid = LayoutInflater.from(context);
         View dialogView = layoutInflaterAndroid.inflate(R.layout.user_input_dialog_box, null);
         TextView dialogTitle = (TextView) dialogView.findViewById(R.id.dialogTitle);
-        dialogTitle.setText(dialogTitle.getText() + " " + String.valueOf(score));
+        dialogTitle.setText(dialogTitle.getText().toString().concat(" ").concat(String.valueOf(score)));
         EditText userInputDialogEditText = (EditText) dialogView.findViewById(R.id.userInputDialog);
         showAlertDialog(AlertManager.getAlertDialogBuilder(context, dialogView), userInputDialogEditText, score);
     }
@@ -89,7 +90,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     public void showProgressBar() {
         linearLayout.setVisibility(View.VISIBLE);
         progressBar.setProgress(100);
-        MyCountDownTimer myCountDownTimer = new MyCountDownTimer(5000,500);
+        MyCountDownTimer myCountDownTimer = new MyCountDownTimer(5000, 500);
         myCountDownTimer.start();
     }
 
