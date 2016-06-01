@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ColourMemory</string>
+    <string name="app_name">ColorMemory</string>
 
     <!--Label-->
     <string name="score_label">Score</string>
@@ -11,7 +11,7 @@
 
     <string name="high_score_rank">Rank</string>
     <string name="high_score_name">Name</string>
-    <string name="high_score_score">Score</string>
+    <string name="score">Score</string>
     <string name="high_score">High Score</string>
     <string name="progress_message">Game Will Start Shortly. Good Luck!</string>
 

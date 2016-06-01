@@ -2,19 +2,20 @@ package colormemory.vicente.com.colormemory.activity;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,15 +43,8 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
     @BindView(R.id.gridview)
     GridView gridView;
-    @BindView(R.id.score)
-    TextView textScore;
 
-    @BindView(R.id.progressbar_layout)
-    LinearLayout linearLayout;
-    @BindView(R.id.progressbar)
-    ProgressBar progressBar;
-
-    private View colorFragView;
+    private SwipeRefreshLayout colorFragView;
     private Navigator navigator;
 
     private CardAdapter cardAdapter;
@@ -61,8 +55,10 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (colorFragView == null) {
             this.context = getActivity();
-            this.colorFragView = inflater.inflate(R.layout.fragment_color, container, false);
+            this.colorFragView = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_color, container, false);
             ButterKnife.bind(this, colorFragView);
+            colorFragView.setOnRefreshListener(this);
+            colorFragView.setColorSchemeColors(Color.GRAY, Color.BLACK, Color.BLUE, Color.RED);
             this.cardAdapter = new CardAdapter(context, this);
         }
         reshuffleCards();
@@ -73,7 +69,9 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     @Override
     public void updateScoreBoard(String score) {
         String value = getString(R.string.score_label).concat(": ").concat(score);
-        textScore.setText(value);
+
+        //TODO:update Activity
+        // textScore.setText(value);
     }
 
     @Override
@@ -88,10 +86,14 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
     @Override
     public void showProgressBar() {
-        linearLayout.setVisibility(View.VISIBLE);
-        progressBar.setProgress(100);
-        MyCountDownTimer myCountDownTimer = new MyCountDownTimer(5000, 500);
-        myCountDownTimer.start();
+        colorFragView.setRefreshing(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getActivity(), getString(R.string.progress_message), Toast.LENGTH_LONG).show();
+                colorFragView.setRefreshing(false);
+            }
+        }, 5000);
     }
 
     @Override
@@ -128,24 +130,17 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
         this.navigator = navigator;
     }
 
-    public class MyCountDownTimer extends CountDownTimer {
-
-        public MyCountDownTimer(long millisInFuture, long countDownInterval) {
-            super(millisInFuture, countDownInterval);
-        }
-
-        @Override
-        public void onTick(long millisUntilFinished) {
-            int progress = (int) (millisUntilFinished / 50);
-            progressBar.setProgress(progress);
-        }
-
-        @Override
-        public void onFinish() {
-            linearLayout.setVisibility(View.GONE);
-            progressBar.setProgress(0);
-        }
-
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //TODO: reload data
+                Toast.makeText(getActivity(), "On Refresh Happend", Toast.LENGTH_LONG).show();
+                colorFragView.setRefreshing(false);
+            }
+        }, 5000);
     }
+
 
 }

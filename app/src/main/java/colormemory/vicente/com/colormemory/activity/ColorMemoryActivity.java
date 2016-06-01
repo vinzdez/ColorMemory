@@ -54,7 +54,7 @@ public class ColorMemoryActivity extends BaseActivity implements FragmentManager
 
     public void initToolBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
     }
