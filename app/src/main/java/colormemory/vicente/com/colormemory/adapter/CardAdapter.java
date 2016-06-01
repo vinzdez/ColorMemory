@@ -75,11 +75,10 @@ public class CardAdapter extends BaseAdapter {
       holder = (ViewHolder) convertView.getTag();
     }
 
-
-    if(isSwipe()){
+    if (isSwipe()) {
       cardMap.clear();
+      setSwipe(false);
     }
-
 
     if (cardMap.get(position) == null) {
       holder.image.setEnabled(false);
