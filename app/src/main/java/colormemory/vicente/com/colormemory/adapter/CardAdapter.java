@@ -75,12 +75,16 @@ public class CardAdapter extends BaseAdapter {
       holder = (ViewHolder) convertView.getTag();
     }
 
+
+    if(isSwipe()){
+      cardMap.clear();
+    }
+
+
     if (cardMap.get(position) == null) {
       holder.image.setEnabled(false);
       holder.image.setOnClickListener(new ImageViewListener(position));
       cardMap.put(position, new Card(holder.image, position));
-      showImageView(holder.image, position);
-    } else if (cardMap.size() == getCount()) {
       showImageView(holder.image, position);
     }
 

@@ -61,7 +61,10 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
       colorFragView.setColorSchemeColors(Color.GRAY, Color.BLACK, Color.BLUE, Color.RED);
       this.cardAdapter = new CardAdapter(context, this);
     }
+
+
     reshuffleCards();
+    cardAdapter.setSwipe(false);
     gridView.setAdapter(cardAdapter);
     return colorFragView;
   }
@@ -135,10 +138,11 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
   public void onRefresh() {
     reshuffleCards();
     cardAdapter.setSwipe(true);
+    cardAdapter.notifyDataSetChanged();
     new Handler().postDelayed(new Runnable() {
       @Override
       public void run() {
-        cardAdapter.notifyDataSetChanged();
+        cardAdapter.setSwipe(false);
         colorFragView.setRefreshing(false);
       }
     }, 5000);
