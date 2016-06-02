@@ -17,7 +17,7 @@ import colormemory.vicente.com.colormemory.view.HighScoreContract;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * Created by Asus on 4/23/2016.
+ * Created by Vicente on 4/23/2016.
  */
 public class HighScoreFragment extends Fragment implements HighScoreContract.View {
 

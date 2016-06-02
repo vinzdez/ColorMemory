@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".activity.ColorMemoryActivity">
-
+    tools:context=".activity.HighScoreActivity">
     <include layout="@layout/toolbar"/>
     <include layout="@layout/include_content_frame" />
 

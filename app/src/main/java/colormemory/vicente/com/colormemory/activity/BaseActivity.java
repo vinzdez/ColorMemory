@@ -1,36 +1,63 @@
 package colormemory.vicente.com.colormemory.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import butterknife.ButterKnife;
-import colormemory.vicente.com.colormemory.service.ScoreService;
-import colormemory.vicente.com.colormemory.util.ActivityUtils;
-import colormemory.vicente.com.colormemory.view.CardPresenter;
-import colormemory.vicente.com.colormemory.view.HighScorePresenter;
+import colormemory.vicente.com.colormemory.R;
 import colormemory.vicente.com.colormemory.view.Navigator;
 
 public class BaseActivity extends AppCompatActivity implements Navigator {
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    ButterKnife.bind(this);
-  }
+    private Toolbar toolbar;
 
-  @Override
-  public void showHighScore() {
-    String tag = HighScoreFragment.COLOR_HIGH_SCORE_FRAGMENT;
-    HighScoreFragment highScoreFragment = HighScoreFragment.newInstance();
-    ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), highScoreFragment, tag);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
+    }
 
-    HighScorePresenter highScorePresenter = new HighScorePresenter(highScoreFragment, new ScoreService(this));
-  }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
-  public void showColourMemoryFragment() {
-    String tag = ColorMemoryFragment.COLOR_MEMORY_FRAGMENT;
-    ColorMemoryFragment colorMemoryFragment = ColorMemoryFragment.newInstance();
-    colorMemoryFragment.setNavigator(this);
-    ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), colorMemoryFragment, tag);
-    CardPresenter cardPresenter = new CardPresenter(colorMemoryFragment, new ScoreService(this));
-  }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        /**
+         *  ab.setDisplayHomeAsUpEnabled(true);
+         ab.setDisplayShowHomeEnabled(true);
+         */
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            case R.id.id_menu_high_score:
+                showHighScore();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void showHighScore() {
+        Intent intent = new Intent(this, HighScoreActivity.class);
+        startActivity(intent);
+    }
+    public void initToolBar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+    }
+
+    public Toolbar getToolbar() {
+        return toolbar;
+    }
 }
