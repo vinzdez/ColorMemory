@@ -1,7 +1,6 @@
 package colormemory.vicente.com.colormemory.dao;
 
 import android.content.Context;
-
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 

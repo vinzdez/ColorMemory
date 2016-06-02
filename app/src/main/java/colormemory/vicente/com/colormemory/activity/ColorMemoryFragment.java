@@ -62,9 +62,8 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
       this.cardAdapter = new CardAdapter(context, this);
     }
 
-
     reshuffleCards();
-    cardAdapter.setSwipe(false);
+    showProgressBar();
     gridView.setAdapter(cardAdapter);
     return colorFragView;
   }
@@ -87,10 +86,9 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     showAlertDialog(AlertManager.getAlertDialogBuilder(context, dialogView), userInputDialogEditText, score);
   }
 
-  @Override
   public void showProgressBar() {
-    Toast.makeText(getActivity(), getString(R.string.progress_message), Toast.LENGTH_LONG).show();
     colorFragView.setRefreshing(true);
+    Toast.makeText(getActivity(), getString(R.string.progress_message), Toast.LENGTH_LONG).show();
     new Handler().postDelayed(new Runnable() {
       @Override
       public void run() {
@@ -102,6 +100,13 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
   @Override
   public void setPresenter(@NonNull CardContract.Presenter presenter) {
     cardPresenter = checkNotNull(presenter);
+  }
+
+  @Override
+  public void onRefresh() {
+    reshuffleCards();
+    cardAdapter.notifyDataSetChanged();
+    showProgressBar();
   }
 
   private void showAlertDialog(AlertDialog.Builder alertDialogBuilderUserInput, final EditText userInputDialogEditText,
@@ -132,19 +137,5 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
   public void setNavigator(Navigator navigator) {
     this.navigator = navigator;
-  }
-
-  @Override
-  public void onRefresh() {
-    reshuffleCards();
-    cardAdapter.setSwipe(true);
-    cardAdapter.notifyDataSetChanged();
-    new Handler().postDelayed(new Runnable() {
-      @Override
-      public void run() {
-        cardAdapter.setSwipe(false);
-        colorFragView.setRefreshing(false);
-      }
-    }, 5000);
   }
 }

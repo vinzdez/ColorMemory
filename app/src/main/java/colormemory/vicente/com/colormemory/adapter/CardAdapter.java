@@ -31,8 +31,6 @@ public class CardAdapter extends BaseAdapter {
   private int gameSpan;
   private int score;
 
-  private boolean isSwipe;
-
   private Animation frontAnimation;
   private Animation backAnimation;
 
@@ -75,22 +73,17 @@ public class CardAdapter extends BaseAdapter {
       holder = (ViewHolder) convertView.getTag();
     }
 
-    if (isSwipe()) {
-      cardMap.clear();
-      setSwipe(false);
-    }
-
     if (cardMap.get(position) == null) {
       holder.image.setEnabled(false);
       holder.image.setOnClickListener(new ImageViewListener(position));
       cardMap.put(position, new Card(holder.image, position));
       showImageView(holder.image, position);
+    } else if (cardMap.get(position) != null) {
+      holder.image.setOnClickListener(new ImageViewListener(position));
+      showImageView(holder.image, position);
     }
 
     if (position == (getCount() - 1)) {
-      if (!isSwipe()) {
-        cardViewAction.showProgressBar();
-      }
       Handler handler = new Handler();
       handler.postDelayed(new Runnable() {
         @Override
@@ -261,14 +254,6 @@ public class CardAdapter extends BaseAdapter {
     } else {
       imageView.setImageDrawable(context.getResources().getDrawable(getCards().get(index)));
     }
-  }
-
-  public boolean isSwipe() {
-    return isSwipe;
-  }
-
-  public void setSwipe(boolean swipe) {
-    isSwipe = swipe;
   }
 
   class ViewHolder {
