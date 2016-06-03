@@ -1,9 +1,7 @@
 package colormemory.vicente.com.colormemory.activity;
 
 import android.os.Bundle;
-import android.widget.FrameLayout;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import colormemory.vicente.com.colormemory.R;
 import colormemory.vicente.com.colormemory.service.ScoreService;
@@ -33,7 +31,8 @@ public class ColorMemoryActivity extends BaseActivity {
 
         if (colorMemoryFragment == null) {
             colorMemoryFragment = ColorMemoryFragment.newInstance();
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), colorMemoryFragment ,R.id.contentFrame);
+            colorMemoryFragment.setNavigator(this);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), colorMemoryFragment, R.id.contentFrame);
         }
         CardPresenter cardPresenter = new CardPresenter(colorMemoryFragment, new ScoreService(this));
     }

@@ -2,7 +2,6 @@ package colormemory.vicente.com.colormemory.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -36,7 +35,7 @@ public class BaseActivity extends AppCompatActivity implements Navigator {
          */
         switch (item.getItemId()) {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                super.onBackPressed();
                 return true;
             case R.id.id_menu_high_score:
                 showHighScore();
@@ -51,6 +50,7 @@ public class BaseActivity extends AppCompatActivity implements Navigator {
         Intent intent = new Intent(this, HighScoreActivity.class);
         startActivity(intent);
     }
+
     public void initToolBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
