@@ -17,6 +17,8 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.MessageFormat;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import colormemory.vicente.com.colormemory.R;
@@ -35,21 +37,24 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
     public static final String COLOR_MEMORY_FRAGMENT =
             "colourmemory.vicente.com.colourmemory.activity.ColorMemoryFragment";
-
-    public static ColorMemoryFragment newInstance() {
-        return new ColorMemoryFragment();
-    }
-
     private Context context;
 
     @BindView(R.id.gridview)
     GridView gridView;
 
     private SwipeRefreshLayout colorFragView;
-    private Navigator navigator;
 
     private CardAdapter cardAdapter;
     private CardContract.Presenter cardPresenter;
+
+    private static CardContract.UpdateToolBar updateToolBar;
+    private static Navigator navigator;
+
+    public static ColorMemoryFragment newInstance(CardContract.UpdateToolBar toolBar, Navigator nav) {
+        updateToolBar = toolBar;
+        navigator = nav;
+        return new ColorMemoryFragment();
+    }
 
     @NonNull
     @Override
@@ -61,21 +66,23 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
             colorFragView.setOnRefreshListener(this);
             colorFragView.setColorSchemeColors(Color.GRAY, Color.BLACK, Color.BLUE, Color.RED);
             this.cardAdapter = new CardAdapter(context, this);
+            updateToolBar.showScore(true);
         }
 
         reshuffleCards();
-        colorFragView.setRefreshing(true);
-        showProgressBar();
         gridView.setAdapter(cardAdapter);
         return colorFragView;
     }
 
     @Override
-    public void updateScoreBoard(String score) {
-        String value = getString(R.string.score_label).concat(": ").concat(score);
+    public void onResume() {
+        super.onResume();
+        colorFragView.bringToFront();
+    }
 
-        //TODO:update Activity
-        // textScore.setText(value);
+    @Override
+    public void updateScoreBoard(String score) {
+        updateToolBar.updateScore(MessageFormat.format(getString(R.string.score), score));
     }
 
     @Override
@@ -88,14 +95,20 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
         showAlertDialog(AlertManager.getAlertDialogBuilder(context, dialogView), userInputDialogEditText, score);
     }
 
-    public void showProgressBar() {
-        Toast.makeText(getActivity(), getString(R.string.progress_message), Toast.LENGTH_LONG).show();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                colorFragView.setRefreshing(false);
-            }
-        }, 5000);
+    //On Load
+    @Override
+    public void showRefresh() {
+        colorFragView.setRefreshing(true);
+        showProgressBar();
+
+    }
+
+    //OnSwipe Down
+    @Override
+    public void onRefresh() {
+        reshuffleCards();
+        cardAdapter.notifyDataSetChanged();
+        showProgressBar();
     }
 
     @Override
@@ -103,11 +116,15 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
         cardPresenter = checkNotNull(presenter);
     }
 
-    @Override
-    public void onRefresh() {
-        reshuffleCards();
-        cardAdapter.notifyDataSetChanged();
-        showProgressBar();
+    public void showProgressBar() {
+        updateToolBar.updateScore(MessageFormat.format(getString(R.string.score), 0));
+        Toast.makeText(getActivity(), getString(R.string.progress_message), Toast.LENGTH_LONG).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                colorFragView.setRefreshing(false);
+            }
+        }, 5000);
     }
 
     private void showAlertDialog(AlertDialog.Builder alertDialogBuilderUserInput, final EditText userInputDialogEditText,
@@ -120,7 +137,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
                 } else {
                     cardPresenter.saveScore(new ScoreViewModel(userInputDialogEditText.getText().toString(), score));
                     userInputDialogEditText.setError(null);
-                    getNavigator().showHighScore();
+                    navigator.showHighScore();
                     dialog.dismiss();
                 }
             }
@@ -132,11 +149,4 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
         cardAdapter.setCards(cardPresenter.getCards());
     }
 
-    public Navigator getNavigator() {
-        return navigator;
-    }
-
-    public void setNavigator(Navigator navigator) {
-        this.navigator = navigator;
-    }
 }

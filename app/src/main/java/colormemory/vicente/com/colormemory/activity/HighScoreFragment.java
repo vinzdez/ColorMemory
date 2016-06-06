@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+
 import colormemory.vicente.com.colormemory.R;
 import colormemory.vicente.com.colormemory.adapter.HighScoreAdapter;
+import colormemory.vicente.com.colormemory.view.CardContract;
 import colormemory.vicente.com.colormemory.view.HighScoreContract;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -21,56 +23,60 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class HighScoreFragment extends Fragment implements HighScoreContract.View {
 
-  public static final String COLOR_HIGH_SCORE_FRAGMENT =
-      "colourmemory.vicente.com.colourmemory.activity.COLOUT_HIGH_SCORE_FRAGMENT";
+    public static final String COLOR_HIGH_SCORE_FRAGMENT =
+            "colourmemory.vicente.com.colourmemory.activity.COLOUT_HIGH_SCORE_FRAGMENT";
 
-  private Context context;
+    private Context context;
 
-  private HighScoreContract.Presenter highScorePresenter;
-  private View highScoreView;
-  private HighScoreAdapter highScoreAdapter;
+    private HighScoreContract.Presenter highScorePresenter;
+    private View highScoreView;
+    private HighScoreAdapter highScoreAdapter;
 
-  private RecyclerView recyclerView;
+    private RecyclerView recyclerView;
+    private static CardContract.UpdateToolBar updateToolBar;
 
-  public static HighScoreFragment newInstance() {
-    return new HighScoreFragment();
-  }
-
-  @NonNull
-  @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    if (highScoreView == null) {
-      this.context = getActivity();
-      this.highScoreView = inflater.inflate(R.layout.fragment_highscore_list, container, false);
-      this.recyclerView = (RecyclerView) highScoreView.findViewById(R.id.id_recycler_highScore);
-      this.highScoreAdapter = new HighScoreAdapter(context);
+    public static HighScoreFragment newInstance(CardContract.UpdateToolBar updateTBar) {
+        updateToolBar = updateTBar;
+        return new HighScoreFragment();
     }
 
-    showHighScore();
-    return highScoreView;
-  }
+    @NonNull
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (highScoreView == null) {
+            this.context = getActivity();
+            this.highScoreView = inflater.inflate(R.layout.fragment_highscore_list, container, false);
+            this.recyclerView = (RecyclerView) highScoreView.findViewById(R.id.id_recycler_highScore);
+            this.highScoreAdapter = new HighScoreAdapter(context);
+        }
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setHasOptionsMenu(true);
-  }
+        showHighScore();
+        return highScoreView;
+    }
 
-  @Override
-  public void onPrepareOptionsMenu(Menu menu) {
-    menu.findItem(R.id.id_menu_high_score).setVisible(false);
-  }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+        updateToolBar.showScore(false);
+    }
 
-  @Override
-  public void showHighScore() {
-    highScoreAdapter.setScoreList(highScorePresenter.getAllScore());
-    recyclerView.setLayoutManager(new LinearLayoutManager(context));
-    recyclerView.setAdapter(highScoreAdapter);
-    highScoreAdapter.notifyDataSetChanged();
-  }
 
-  @Override
-  public void setPresenter(@NonNull HighScoreContract.Presenter presenter) {
-    highScorePresenter = checkNotNull(presenter);
-  }
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.id_menu_high_score).setVisible(false);
+    }
+
+    @Override
+    public void showHighScore() {
+        highScoreAdapter.setScoreList(highScorePresenter.getAllScore());
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(highScoreAdapter);
+        highScoreAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void setPresenter(@NonNull HighScoreContract.Presenter presenter) {
+        highScorePresenter = checkNotNull(presenter);
+    }
 }

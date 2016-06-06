@@ -2,23 +2,22 @@ package colormemory.vicente.com.colormemory.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import butterknife.ButterKnife;
 import colormemory.vicente.com.colormemory.R;
+import colormemory.vicente.com.colormemory.view.CardContract;
 import colormemory.vicente.com.colormemory.view.Navigator;
 
-public class BaseActivity extends AppCompatActivity implements Navigator {
+public abstract class BaseActivity extends AppCompatActivity implements Navigator, CardContract.UpdateToolBar {
 
-    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
     }
 
     @Override
@@ -29,15 +28,13 @@ public class BaseActivity extends AppCompatActivity implements Navigator {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        /**
-         *  ab.setDisplayHomeAsUpEnabled(true);
-         ab.setDisplayShowHomeEnabled(true);
-         */
         switch (item.getItemId()) {
-            case android.R.id.home:
-                super.onBackPressed();
+    /*        case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                *//*Intent intent = new Intent(this, ColorMemoryActivity.class);
+                startActivity(intent);*//*
                 return true;
-            case R.id.id_menu_high_score:
+    */        case R.id.id_menu_high_score:
                 showHighScore();
                 return true;
             default:
@@ -45,19 +42,16 @@ public class BaseActivity extends AppCompatActivity implements Navigator {
         }
     }
 
+
     @Override
     public void showHighScore() {
         Intent intent = new Intent(this, HighScoreActivity.class);
         startActivity(intent);
     }
 
-    public void initToolBar() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+    public void initToolBar(Toolbar toolbar) {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
     }
 
-    public Toolbar getToolbar() {
-        return toolbar;
-    }
 }
