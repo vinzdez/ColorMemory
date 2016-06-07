@@ -45,4 +45,5 @@ dependencies {
     compile "com.jakewharton:butterknife:$rootProject.butterknife"
     apt "com.jakewharton:butterknife-compiler:$rootProject.butterknife"
     compile "com.google.guava:guava:$rootProject.guavaVersion"
+    compile "com.github.deano2390:MaterialShowcaseView:$rootProject.materialShowcase"
 }

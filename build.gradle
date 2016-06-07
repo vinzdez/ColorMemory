@@ -16,6 +16,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -35,4 +36,5 @@ ext {
     butterknife = '8.0.1'
     gradleVersion = '2.0.0'
     guavaVersion = '18.0'
+    materialShowcase = '1.1.0'
 }
