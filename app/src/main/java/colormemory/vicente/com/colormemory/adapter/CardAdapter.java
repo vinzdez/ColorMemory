@@ -74,9 +74,9 @@ public class CardAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+        holder.image.setEnabled(false);
 
         if (cardMap.get(position) == null) {
-            holder.image.setEnabled(false);
             holder.image.setOnClickListener(new ImageViewListener(position));
             cardMap.put(position, new Card(holder.image, position));
             showImageView(holder.image, position);

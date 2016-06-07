@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import colormemory.vicente.com.colormemory.R;
 import colormemory.vicente.com.colormemory.adapter.HighScoreAdapter;
 import colormemory.vicente.com.colormemory.view.CardContract;
@@ -32,7 +34,8 @@ public class HighScoreFragment extends Fragment implements HighScoreContract.Vie
     private View highScoreView;
     private HighScoreAdapter highScoreAdapter;
 
-    private RecyclerView recyclerView;
+    @BindView(R.id.id_recycler_highScore)
+    RecyclerView recyclerView;
     private static CardContract.UpdateToolBar updateToolBar;
 
     public static HighScoreFragment newInstance(CardContract.UpdateToolBar updateTBar) {
@@ -46,7 +49,7 @@ public class HighScoreFragment extends Fragment implements HighScoreContract.Vie
         if (highScoreView == null) {
             this.context = getActivity();
             this.highScoreView = inflater.inflate(R.layout.fragment_highscore_list, container, false);
-            this.recyclerView = (RecyclerView) highScoreView.findViewById(R.id.id_recycler_highScore);
+            ButterKnife.bind(this, highScoreView);
             this.highScoreAdapter = new HighScoreAdapter(context);
         }
 

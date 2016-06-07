@@ -2,7 +2,6 @@ package colormemory.vicente.com.colormemory.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -29,12 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigato
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-    /*        case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                *//*Intent intent = new Intent(this, ColorMemoryActivity.class);
-                startActivity(intent);*//*
-                return true;
-    */        case R.id.id_menu_high_score:
+            case R.id.id_menu_high_score:
                 showHighScore();
                 return true;
             default:
