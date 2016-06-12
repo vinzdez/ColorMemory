@@ -40,9 +40,9 @@ public class ColorMemoryActivity extends BaseActivity {
 
         if (colorMemoryFragment == null) {
             colorMemoryFragment = ColorMemoryFragment.newInstance(this, this);
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), colorMemoryFragment, R.id.contentFrame);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), colorMemoryFragment);
         }
-        CardPresenter cardPresenter = new CardPresenter(colorMemoryFragment, new ScoreService(this));
+        new CardPresenter(colorMemoryFragment, new ScoreService(this));
     }
 
     @Override

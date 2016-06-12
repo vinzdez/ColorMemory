@@ -2,8 +2,6 @@
     <string name="app_name">ColorMemory</string>
 
     <!--Label-->
-    <string name="score_label">Score</string>
-    <string name="score_default_value">Score : 0</string>
 
     <string name="personal_best">Personal Best : </string>
     <string name="user_name">Enter Name</string>

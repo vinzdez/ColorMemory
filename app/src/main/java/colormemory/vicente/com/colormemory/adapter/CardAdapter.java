@@ -3,7 +3,6 @@ package colormemory.vicente.com.colormemory.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
-import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -25,7 +24,6 @@ import colormemory.vicente.com.colormemory.view.CardContract;
  */
 public class CardAdapter extends BaseAdapter {
 
-    private ViewHolder holder;
     private Map<Integer, Card> cardMap;
     private Map<Integer, Integer> cards;
     private Context context;
@@ -67,6 +65,7 @@ public class CardAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
+        ViewHolder holder;
         if (convertView == null) {
             convertView = ((Activity) context).getLayoutInflater().inflate(R.layout.card_layout, parent, false);
             holder = new ViewHolder(convertView);
@@ -74,31 +73,29 @@ public class CardAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.image.setEnabled(false);
 
         if (cardMap.get(position) == null) {
-            holder.image.setOnClickListener(new ImageViewListener(position));
             cardMap.put(position, new Card(holder.image, position));
             showImageView(holder.image, position);
         } else if (cardMap.get(position) != null) {
-            holder.image.setOnClickListener(new ImageViewListener(position));
             showImageView(holder.image, position);
         }
 
+        holder.image.setOnClickListener(new ImageViewListener(position));
+        holder.image.setEnabled(false);
         if (position == (getCount() - 1)) {
-            cardViewAction.showRefresh();
-            score = 0;
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
+            cardViewAction.showRefresh(new Runnable() {
                 @Override
                 public void run() {
                     for (int key : cardMap.keySet()) {
                         ImageView imageView = cardMap.get(key).getImageView();
                         imageView.setEnabled(true);
                         showDeafaultImage(imageView);
+                        cardViewAction.hideRefresh();
                     }
                 }
-            }, 5000);
+            });
+            score = 0;
         }
         return convertView;
     }
@@ -149,13 +146,13 @@ public class CardAdapter extends BaseAdapter {
         public void onAnimationStart(Animation animation) {
             if (animation == frontAnimation) {
 
-                if (currentCard.isCardInitialyClick() && allowFutureClick) {
+                if (currentCard != null && (currentCard.isCardInitialyClick() && allowFutureClick)) {
                     //shows the first card
                     showImageView(currentCard.getImageView(), currentPosition);
-                } else if (!currentCard.isCardInitialyClick() && !allowFutureClick) {
+                } else if (currentCard != null && (!currentCard.isCardInitialyClick() && !allowFutureClick)) {
                     //shows the second card
                     showImageView(currentCard.getImageView(), currentPosition);
-                } else if (!previousCard.isVisible()) {
+                } else if (previousCard != null && (!previousCard.isVisible())) {
                     //if both card are not equal
                     showDeafaultImage(previousCard.getImageView());
                     showDeafaultImage(currentCard.getImageView());
@@ -163,9 +160,13 @@ public class CardAdapter extends BaseAdapter {
                     previousCard.getImageView().setAnimation(backAnimation);
                     previousCard.getImageView().startAnimation(backAnimation);
                 }
-                currentCard.getImageView().clearAnimation();
-                currentCard.getImageView().setAnimation(backAnimation);
-                currentCard.getImageView().startAnimation(backAnimation);
+
+                if (currentCard != null) {
+                    currentCard.getImageView().clearAnimation();
+                    currentCard.getImageView().setAnimation(backAnimation);
+                    currentCard.getImageView().startAnimation(backAnimation);
+                }
+
             }
         }
 

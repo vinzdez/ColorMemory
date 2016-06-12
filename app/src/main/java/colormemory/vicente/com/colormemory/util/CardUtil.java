@@ -21,8 +21,8 @@ public class CardUtil {
   public static Map<Integer, Integer> shuffleCards() {
     List<Integer> myArray = new ArrayList<>();
     Map<Integer, Integer> cardImageMap = new HashMap<>();
-    for (int i = 0; i < cards.length; i++) {
-      myArray.add(cards[i]);
+    for (int card : cards) {
+      myArray.add(card);
     }
     Collections.shuffle(myArray);
 

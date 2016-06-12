@@ -13,12 +13,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class CardPresenter implements CardContract.Presenter {
 
-  private final CardContract.View cardActionView;
   private Map<Integer, Integer> cards;
   private ScoreService scoreService;
 
   public CardPresenter(@NonNull CardContract.View cardAction, @NonNull ScoreService scoreService) {
-    this.cardActionView = cardAction;
+    CardContract.View cardActionView = cardAction;
     this.scoreService = scoreService;
     cardAction = checkNotNull(cardAction, "Card View cannot be null!");
     cardAction.setPresenter(this);

@@ -68,9 +68,9 @@ public class HighScoreActivity extends BaseActivity {
 
         if (highScoreFragment == null) {
             highScoreFragment = HighScoreFragment.newInstance(this);
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), highScoreFragment, R.id.contentFrame);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), highScoreFragment);
         }
-        HighScorePresenter highScorePresenter = new HighScorePresenter(highScoreFragment, new ScoreService(this));
+         new HighScorePresenter(highScoreFragment, new ScoreService(this));
     }
 
     @Override

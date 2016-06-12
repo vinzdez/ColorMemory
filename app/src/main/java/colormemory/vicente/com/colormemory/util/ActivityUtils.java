@@ -20,12 +20,12 @@ public class ActivityUtils {
      * The {@code fragment} is added to the container view with id {@code frameId}. The operation is
      * performed by the {@code fragmentManager}.
      */
-    public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager, @NonNull Fragment fragment, int frameId) {
+    public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager, @NonNull Fragment fragment) {
         checkNotNull(fragmentManager);
         checkNotNull(fragment);
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(frameId, fragment);
+        fragmentTransaction.replace(colormemory.vicente.com.colormemory.R.id.contentFrame, fragment);
         fragmentTransaction.commit();
     }
 }

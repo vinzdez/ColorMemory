@@ -1,7 +1,6 @@
 package colormemory.vicente.com.colormemory.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -13,12 +12,6 @@ import colormemory.vicente.com.colormemory.view.CardContract;
 import colormemory.vicente.com.colormemory.view.Navigator;
 
 public abstract class BaseActivity extends AppCompatActivity implements Navigator, CardContract.UpdateToolBar {
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

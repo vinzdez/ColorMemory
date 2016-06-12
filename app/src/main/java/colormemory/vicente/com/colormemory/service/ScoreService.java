@@ -36,7 +36,6 @@ public class ScoreService {
   public List<Score> getAllScore() {
     Realm realm = DaoFactory.getInstance(context);
     // Or alternatively do the same all at once (the "Fluent interface"):
-    RealmResults<Score> sortedScore = realm.where(Score.class).findAllSorted("score", Sort.DESCENDING);
-    return sortedScore;
+    return realm.where(Score.class).findAllSorted("score", Sort.DESCENDING);
   }
 }

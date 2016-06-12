@@ -50,7 +50,7 @@ public class HighScoreFragment extends Fragment implements HighScoreContract.Vie
             this.context = getActivity();
             this.highScoreView = inflater.inflate(R.layout.fragment_highscore_list, container, false);
             ButterKnife.bind(this, highScoreView);
-            this.highScoreAdapter = new HighScoreAdapter(context);
+            this.highScoreAdapter = new HighScoreAdapter();
         }
 
         showHighScore();

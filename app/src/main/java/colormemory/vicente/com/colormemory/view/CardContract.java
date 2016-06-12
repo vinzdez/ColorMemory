@@ -16,7 +16,9 @@ public interface CardContract {
 
         void showUserInputDialog(int score);
 
-        void showRefresh();
+        void showRefresh(Runnable runnable);
+
+        void hideRefresh();
     }
 
     interface UpdateToolBar {
