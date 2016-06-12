@@ -121,8 +121,6 @@ public class CardAdapter extends BaseAdapter {
 
         @Override
         public void onClick(View v) {
-            frontAnimation.setAnimationListener(this);
-            backAnimation.setAnimationListener(this);
             handleImageClick();
         }
 
@@ -186,6 +184,10 @@ public class CardAdapter extends BaseAdapter {
 
             //stop user to click initial card, and while evaluating card equality
             if (!currentCard.isCardInitialyClick() && allowFutureClick) {
+
+                frontAnimation.setAnimationListener(this);
+                backAnimation.setAnimationListener(this);
+
                 ImageView currentCardImage = currentCard.getImageView();
                 animateCard(currentCardImage);
 
