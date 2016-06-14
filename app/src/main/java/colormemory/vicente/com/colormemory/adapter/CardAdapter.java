@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +19,9 @@ import butterknife.ButterKnife;
 import colormemory.vicente.com.colormemory.R;
 import colormemory.vicente.com.colormemory.model.Card;
 import colormemory.vicente.com.colormemory.view.CardContract;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 /**
  * Created by Vicente on 4/23/2016.
@@ -77,6 +81,20 @@ public class CardAdapter extends BaseAdapter {
         if (cardMap.get(position) == null) {
             cardMap.put(position, new Card(holder.image, position));
             showImageView(holder.image, position);
+
+            /*if (position == 3) {
+                new MaterialShowcaseView.Builder((Activity) context)
+                        .setTarget(cardMap.get(0).getImageView())
+                        .setTitleText("Hello")
+                        .setDismissText("GOT IT")
+                        .setContentText("This is some amazing feature you should know about")
+                        .setDelay(5000) // optional but starting animations immediately in onCreate can make them choppy
+                        .singleUse("SHOWCASE_ID") // provide a unique ID used to ensure it is only shown once
+                        .withCircleShape()
+                        .show();
+
+            }*/
+
         } else if (cardMap.get(position) != null) {
             showImageView(holder.image, position);
         }
@@ -91,7 +109,7 @@ public class CardAdapter extends BaseAdapter {
                         ImageView imageView = cardMap.get(key).getImageView();
                         imageView.setEnabled(true);
                         showDeafaultImage(imageView);
-                        cardViewAction.hideRefresh();
+                        cardViewAction.dismissedRefresh();
                     }
                 }
             });

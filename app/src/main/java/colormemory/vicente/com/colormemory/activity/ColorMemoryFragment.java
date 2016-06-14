@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,9 @@ import colormemory.vicente.com.colormemory.model.ScoreViewModel;
 import colormemory.vicente.com.colormemory.util.AlertManager;
 import colormemory.vicente.com.colormemory.view.CardContract;
 import colormemory.vicente.com.colormemory.view.Navigator;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -77,6 +81,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
             ButterKnife.bind(this, colorFragView);
 
+
         }
 
         reshuffleCards();
@@ -87,6 +92,10 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     @Override
     public void onResume() {
         super.onResume();
+        //High Score
+//        View highScore = getActivity().findViewById(R.id.id_menu_high_score);
+  //      presentShowcaseSequence(highScore);
+
         colorFragView.setRefreshing(false);
         colorFragView.post(new Runnable() {
             @Override
@@ -109,7 +118,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
     @Override
     public void onDestroy() {
-        hideRefresh();
+        dismissedRefresh();
         colorFragView.clearAnimation();
         colorFragView.destroyDrawingCache();
         super.onDestroy();
@@ -141,7 +150,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     }
 
     @Override
-    public void hideRefresh() {
+    public void dismissedRefresh() {
         colorFragView.post(new Runnable() {
             @Override
             public void run() {
@@ -166,11 +175,53 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
         cardPresenter = checkNotNull(presenter);
     }
 
+    //Move to Presenter?
+    private void presentShowcaseSequence( View highScoreMenu) {
+
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(500); // half second between each showcase view
+
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(getActivity(), TAG);
+
+        sequence.setOnItemShownListener(new MaterialShowcaseSequence.OnSequenceItemShownListener() {
+            @Override
+            public void onShow(MaterialShowcaseView itemView, int position) {
+                Toast.makeText(itemView.getContext(), "Item #" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        sequence.setConfig(config);
+
+//        sequence.addSequenceItem(card, "This is a card", "GOT IT");
+
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(getActivity())
+                        .setTarget(highScoreMenu)
+                        .setDismissText("GOT IT")
+                        .setContentText("This is high score menu")
+                        .withRectangleShape(true)
+                        .build()
+        );
+
+        /*sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(getActivity())
+                        .setTarget(mButtonThree)
+                        .setDismissText("GOT IT")
+                        .setContentText("This is button three")
+                        .withRectangleShape()
+                        .build()
+        );*/
+
+        sequence.start();
+
+    }
+
+
     private Runnable getProgressBarRunnable() {
         return new Runnable() {
             @Override
             public void run() {
-                hideRefresh();
+                dismissedRefresh();
             }
         };
     }

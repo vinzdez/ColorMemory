@@ -18,7 +18,7 @@ public interface CardContract {
 
         void showRefresh(Runnable runnable);
 
-        void hideRefresh();
+        void dismissedRefresh();
     }
 
     interface UpdateToolBar {

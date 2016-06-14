@@ -21,7 +21,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigato
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        View view = findViewById(R.id.id_menu_high_score);
         switch (item.getItemId()) {
             case R.id.id_menu_high_score:
                 //TODO : add preferences if ShowCase appeared
