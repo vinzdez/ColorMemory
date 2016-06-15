@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -80,8 +79,6 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
             updateToolBar.showScore(true);
 
             ButterKnife.bind(this, colorFragView);
-
-
         }
 
         reshuffleCards();
@@ -94,7 +91,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
         super.onResume();
         //High Score
 //        View highScore = getActivity().findViewById(R.id.id_menu_high_score);
-  //      presentShowcaseSequence(highScore);
+        //      presentShowcaseSequence(highScore);
 
         colorFragView.setRefreshing(false);
         colorFragView.post(new Runnable() {
@@ -176,7 +173,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     }
 
     //Move to Presenter?
-    private void presentShowcaseSequence( View highScoreMenu) {
+    private void presentShowcaseSequence(View highScoreMenu) {
 
         ShowcaseConfig config = new ShowcaseConfig();
         config.setDelay(500); // half second between each showcase view
