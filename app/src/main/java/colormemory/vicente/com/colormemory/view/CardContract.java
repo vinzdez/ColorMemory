@@ -19,6 +19,8 @@ public interface CardContract {
         void showRefresh(Runnable runnable);
 
         void dismissedRefresh();
+
+        void enableShowCase();
     }
 
     interface UpdateToolBar {

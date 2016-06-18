@@ -27,9 +27,6 @@ import colormemory.vicente.com.colormemory.model.ScoreViewModel;
 import colormemory.vicente.com.colormemory.util.AlertManager;
 import colormemory.vicente.com.colormemory.view.CardContract;
 import colormemory.vicente.com.colormemory.view.Navigator;
-import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
-import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
-import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -80,7 +77,6 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
             ButterKnife.bind(this, colorFragView);
         }
-
         reshuffleCards();
         this.gridView.setAdapter(cardAdapter);
         return colorFragView;
@@ -89,10 +85,6 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     @Override
     public void onResume() {
         super.onResume();
-        //High Score
-//        View highScore = getActivity().findViewById(R.id.id_menu_high_score);
-        //      presentShowcaseSequence(highScore);
-
         colorFragView.setRefreshing(false);
         colorFragView.post(new Runnable() {
             @Override
@@ -156,10 +148,33 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
         });
     }
 
+    @Override
+    public void enableShowCase() {
+ /*       new MaterialShowcaseView.Builder(getActivity())
+                .setTitleText("Intro")
+                .setDismissText("GOT IT")
+                .setContentText("The Cards are flip for 5 seconds to have an idea where each pair of cards are located. When the cards are face down you are only allowed to click two cards.")
+                .setDelay(100) // optional but starting animations immediately in onCreate can make them choppy
+                .singleUse(TAG) // provide a unique ID used to ensure it is only shown once
+                .withoutShape()
+                .setListener(new IShowcaseListener() {
+                    @Override
+                    public void onShowcaseDisplayed(MaterialShowcaseView materialShowcaseView) {
+                    }
+
+                    @Override
+                    public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView) {
+                        cardAdapter.flipDownCards();
+                    }
+                })
+                .show();*/
+    }
+
     //OnSwipe Down
     @Override
     public void onRefresh() {
         reshuffleCards();
+        cardAdapter.getImageWidgets().clear();
         cardAdapter.notifyDataSetChanged();
 
         updateToolBar.updateScore(MessageFormat.format(getString(R.string.score), 0));
@@ -171,48 +186,6 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     public void setPresenter(@NonNull CardContract.Presenter presenter) {
         cardPresenter = checkNotNull(presenter);
     }
-
-    //Move to Presenter?
-    private void presentShowcaseSequence(View highScoreMenu) {
-
-        ShowcaseConfig config = new ShowcaseConfig();
-        config.setDelay(500); // half second between each showcase view
-
-        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(getActivity(), TAG);
-
-        sequence.setOnItemShownListener(new MaterialShowcaseSequence.OnSequenceItemShownListener() {
-            @Override
-            public void onShow(MaterialShowcaseView itemView, int position) {
-                Toast.makeText(itemView.getContext(), "Item #" + position, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        sequence.setConfig(config);
-
-//        sequence.addSequenceItem(card, "This is a card", "GOT IT");
-
-        sequence.addSequenceItem(
-                new MaterialShowcaseView.Builder(getActivity())
-                        .setTarget(highScoreMenu)
-                        .setDismissText("GOT IT")
-                        .setContentText("This is high score menu")
-                        .withRectangleShape(true)
-                        .build()
-        );
-
-        /*sequence.addSequenceItem(
-                new MaterialShowcaseView.Builder(getActivity())
-                        .setTarget(mButtonThree)
-                        .setDismissText("GOT IT")
-                        .setContentText("This is button three")
-                        .withRectangleShape()
-                        .build()
-        );*/
-
-        sequence.start();
-
-    }
-
 
     private Runnable getProgressBarRunnable() {
         return new Runnable() {
@@ -242,6 +215,6 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
     private void reshuffleCards() {
         cardPresenter.shuffleCards();
-        cardAdapter.setCards(cardPresenter.getCards());
+        cardAdapter.setCardPositionMap(cardPresenter.getCards());
     }
 }
