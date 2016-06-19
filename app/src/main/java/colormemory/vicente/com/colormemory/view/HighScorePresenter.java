@@ -19,7 +19,7 @@ public class HighScorePresenter implements HighScoreContract.Presenter {
   public HighScorePresenter(@NonNull HighScoreContract.View highScoreView, @NonNull ScoreService scoreService) {
     this.highScoreView = highScoreView;
     this.scoreService = scoreService;
-    highScoreView = checkNotNull(highScoreView, "Card View cannot be null!");
+    highScoreView = checkNotNull(highScoreView, "Card GameSpanView cannot be null!");
     highScoreView.setPresenter(this);
   }
 

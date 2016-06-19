@@ -70,7 +70,7 @@ public class HighScoreActivity extends BaseActivity {
             highScoreFragment = HighScoreFragment.newInstance(this);
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), highScoreFragment);
         }
-         new HighScorePresenter(highScoreFragment, new ScoreService(this));
+        new HighScorePresenter(highScoreFragment, new ScoreService(this));
     }
 
     @Override
@@ -81,5 +81,10 @@ public class HighScoreActivity extends BaseActivity {
     @Override
     public void showScore(boolean show) {
         score.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    public void runShowCase() {
+        //Not Applicable
     }
 }

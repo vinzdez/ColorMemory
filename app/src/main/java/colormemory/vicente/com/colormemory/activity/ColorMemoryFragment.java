@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import java.text.MessageFormat;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import colormemory.vicente.com.colormemory.R;
@@ -27,13 +28,16 @@ import colormemory.vicente.com.colormemory.model.ScoreViewModel;
 import colormemory.vicente.com.colormemory.util.AlertManager;
 import colormemory.vicente.com.colormemory.view.CardContract;
 import colormemory.vicente.com.colormemory.view.Navigator;
+import colormemory.vicente.com.colormemory.widget.ImageWidget;
+import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created by Vicente on 4/23/2016.
  */
-public class ColorMemoryFragment extends Fragment implements CardContract.View {
+public class ColorMemoryFragment extends Fragment implements CardContract.GameSpanView {
 
     public static final String TAG = ColorMemoryFragment.class.getName();
 
@@ -44,6 +48,11 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     @BindView(R.id.gridview)
     GridView gridView;
 
+    @BindString(R.string.got_it)
+    String gotIt;
+    @BindString(R.string.intro)
+    String intro;
+
     private SwipeRefreshLayout colorFragView;
 
     private CardAdapter cardAdapter;
@@ -52,11 +61,11 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     private Handler handler;
     private Runnable resetCardRunnable;
 
-    private static CardContract.UpdateToolBar updateToolBar;
+    private static CardContract.ScoreView scoreView;
     private static Navigator navigator;
 
-    public static ColorMemoryFragment newInstance(CardContract.UpdateToolBar toolBar, Navigator nav) {
-        updateToolBar = toolBar;
+    public static ColorMemoryFragment newInstance(CardContract.ScoreView toolBar, Navigator nav) {
+        scoreView = toolBar;
         navigator = nav;
         return new ColorMemoryFragment();
     }
@@ -73,7 +82,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
             colorFragView.setOnRefreshListener(this);
             colorFragView.setColorSchemeColors(Color.GRAY, Color.BLACK, Color.BLUE, Color.RED);
 
-            updateToolBar.showScore(true);
+            scoreView.showScore(true);
 
             ButterKnife.bind(this, colorFragView);
         }
@@ -116,7 +125,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
     @Override
     public void updateScoreBoard(String score) {
-        updateToolBar.updateScore(MessageFormat.format(getString(R.string.score), score));
+        scoreView.updateScore(MessageFormat.format(getString(R.string.score), score));
     }
 
     @Override
@@ -134,7 +143,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     public void showRefresh(Runnable runnable) {
         this.resetCardRunnable = runnable;
         handler.postDelayed(resetCardRunnable, 5000);
-        updateToolBar.updateScore(MessageFormat.format(getString(R.string.score), 0));
+        scoreView.updateScore(MessageFormat.format(getString(R.string.score), 0));
         Toast.makeText(getActivity(), getString(R.string.progress_message), Toast.LENGTH_LONG).show();
     }
 
@@ -149,11 +158,11 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
     }
 
     @Override
-    public void enableShowCase() {
- /*       new MaterialShowcaseView.Builder(getActivity())
+    public void runShowCase() {
+        new MaterialShowcaseView.Builder(getActivity())
                 .setTitleText("Intro")
-                .setDismissText("GOT IT")
-                .setContentText("The Cards are flip for 5 seconds to have an idea where each pair of cards are located. When the cards are face down you are only allowed to click two cards.")
+                .setDismissText(gotIt)
+                .setContentText(intro)
                 .setDelay(100) // optional but starting animations immediately in onCreate can make them choppy
                 .singleUse(TAG) // provide a unique ID used to ensure it is only shown once
                 .withoutShape()
@@ -164,10 +173,13 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
 
                     @Override
                     public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView) {
-                        cardAdapter.flipDownCards();
+                        scoreView.runShowCase();
+                        if(cardAdapter.getImageWidgets() != null && !cardAdapter.getImageWidgets().isEmpty()){
+                            cardAdapter.flipDownCards(cardAdapter.getImageWidgets().get(0));
+                        }
                     }
                 })
-                .show();*/
+                .show();
     }
 
     //OnSwipe Down
@@ -177,7 +189,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.View {
         cardAdapter.getImageWidgets().clear();
         cardAdapter.notifyDataSetChanged();
 
-        updateToolBar.updateScore(MessageFormat.format(getString(R.string.score), 0));
+        scoreView.updateScore(MessageFormat.format(getString(R.string.score), 0));
         Toast.makeText(getActivity(), getString(R.string.progress_message), Toast.LENGTH_LONG).show();
         colorFragView.postDelayed(getProgressBarRunnable(), 5000);
     }

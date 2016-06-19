@@ -16,10 +16,10 @@ public class CardPresenter implements CardContract.Presenter {
   private Map<Integer, Integer> cards;
   private ScoreService scoreService;
 
-  public CardPresenter(@NonNull CardContract.View cardAction, @NonNull ScoreService scoreService) {
-    CardContract.View cardActionView = cardAction;
+  public CardPresenter(@NonNull CardContract.GameSpanView cardAction, @NonNull ScoreService scoreService) {
+    CardContract.GameSpanView cardActionGameSpanView = cardAction;
     this.scoreService = scoreService;
-    cardAction = checkNotNull(cardAction, "Card View cannot be null!");
+    cardAction = checkNotNull(cardAction, "Card GameSpanView cannot be null!");
     cardAction.setPresenter(this);
   }
 

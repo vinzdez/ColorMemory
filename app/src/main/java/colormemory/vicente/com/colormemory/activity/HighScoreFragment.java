@@ -36,10 +36,10 @@ public class HighScoreFragment extends Fragment implements HighScoreContract.Vie
 
     @BindView(R.id.id_recycler_highScore)
     RecyclerView recyclerView;
-    private static CardContract.UpdateToolBar updateToolBar;
+    private static CardContract.ScoreView scoreView;
 
-    public static HighScoreFragment newInstance(CardContract.UpdateToolBar updateTBar) {
-        updateToolBar = updateTBar;
+    public static HighScoreFragment newInstance(CardContract.ScoreView updateTBar) {
+        scoreView = updateTBar;
         return new HighScoreFragment();
     }
 
@@ -61,7 +61,7 @@ public class HighScoreFragment extends Fragment implements HighScoreContract.Vie
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        updateToolBar.showScore(false);
+        scoreView.showScore(false);
     }
 
 

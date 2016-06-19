@@ -27,6 +27,9 @@ import colormemory.vicente.com.colormemory.widget.ImageWidgetBuilder;
  */
 public class CardAdapter extends BaseAdapter implements ImageCallBack {
 
+    private static int ADD_TWO_POINTS = 2;
+    private static int MINUS_ONE_POINTS = 1;
+
     private Map<Integer, Card> cardMap;
     private Map<Integer, Integer> cardPositionMap;
     private Context context;
@@ -35,16 +38,16 @@ public class CardAdapter extends BaseAdapter implements ImageCallBack {
     private int gameSpan;
     private int score;
     private List<ImageWidget> imageWidgets;
-    private CardContract.View cardViewAction;
+    private CardContract.GameSpanView cardGameSpanViewAction;
 
 
     private SettingsPreferences settingsPreferences;
 
-    public CardAdapter(Context context, CardContract.View cardViewAction) {
+    public CardAdapter(Context context, CardContract.GameSpanView cardGameSpanViewAction) {
         this.cardMap = new HashMap<>();
         this.context = context;
         this.imageWidgets = new ArrayList<>();
-        this.cardViewAction = cardViewAction;
+        this.cardGameSpanViewAction = cardGameSpanViewAction;
         this.settingsPreferences = new SettingsPreferences(context);
     }
 
@@ -95,13 +98,12 @@ public class CardAdapter extends BaseAdapter implements ImageCallBack {
         holder.image.setOnClickListener(imageWidget);
         holder.image.setEnabled(false);
         if (position == (getCount() - 1)) {
-            //  if (!settingsPreferences.isShowCaseAppeared()) {
-            //todo separate showShowCase
-
-            //     settingsPreferences.disableShowCaseAppearance();
-            //  } else {
-            flipDownCards(imageWidget);
-            //  }
+            if (!settingsPreferences.isShowCaseAppeared()) {
+                cardGameSpanViewAction.runShowCase();
+                settingsPreferences.disableShowCaseAppearance();
+            } else {
+                flipDownCards(imageWidget);
+            }
 
 
         }
@@ -113,7 +115,7 @@ public class CardAdapter extends BaseAdapter implements ImageCallBack {
     }
 
     public void flipDownCards(final ImageWidget imageWidget) {
-        cardViewAction.showRefresh(new Runnable() {
+        cardGameSpanViewAction.showRefresh(new Runnable() {
             @Override
             public void run() {
                 allowFutureClick(true);
@@ -121,10 +123,11 @@ public class CardAdapter extends BaseAdapter implements ImageCallBack {
                     ImageView imageView = cardMap.get(key).getImageView();
                     imageView.setEnabled(true);
                     imageWidget.showDeafaultImage(imageView);
-                    cardViewAction.dismissedRefresh();
                 }
+                cardGameSpanViewAction.dismissedRefresh();
             }
         });
+
         score = 0;
     }
 
@@ -134,16 +137,16 @@ public class CardAdapter extends BaseAdapter implements ImageCallBack {
 
     @Override
     public void updateScoreBoard(int value) {
-        if (value == 2) {
-            this.score += 2;
+        if (value == ADD_TWO_POINTS) {
+            this.score += ADD_TWO_POINTS;
             this.gameSpan++;
-        } else if (value == 1) {
-            this.score -= 1;
+        } else if (value == MINUS_ONE_POINTS) {
+            this.score -= MINUS_ONE_POINTS;
         }
 
-        cardViewAction.updateScoreBoard(String.valueOf(score));
+        cardGameSpanViewAction.updateScoreBoard(String.valueOf(score));
         if (isGameEnded()) {
-            cardViewAction.showUserInputDialog(score);
+            cardGameSpanViewAction.showUserInputDialog(score);
         }
         allowFutureClick(true);
     }

@@ -11,7 +11,7 @@ import colormemory.vicente.com.colormemory.model.ScoreViewModel;
  */
 public interface CardContract {
 
-    interface View extends BaseView<Presenter>, SwipeRefreshLayout.OnRefreshListener {
+    interface GameSpanView extends BaseView<Presenter>, SwipeRefreshLayout.OnRefreshListener {
         void updateScoreBoard(String score);
 
         void showUserInputDialog(int score);
@@ -20,13 +20,15 @@ public interface CardContract {
 
         void dismissedRefresh();
 
-        void enableShowCase();
+        void runShowCase();
     }
 
-    interface UpdateToolBar {
+    interface ScoreView {
         void updateScore(String score);
 
         void showScore(boolean show);
+
+        void runShowCase();
     }
 
     interface Presenter {
