@@ -2,6 +2,7 @@ package colormemory.vicente.com.colormemory.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -34,7 +35,6 @@ public class CardAdapter extends BaseAdapter implements ImageCallBack {
     private Map<Integer, Integer> cardPositionMap;
     private Context context;
 
-
     private int gameSpan;
     private int score;
     private List<ImageWidget> imageWidgets;
@@ -48,7 +48,6 @@ public class CardAdapter extends BaseAdapter implements ImageCallBack {
         this.context = context;
         this.imageWidgets = new ArrayList<>();
         this.cardGameSpanViewAction = cardGameSpanViewAction;
-        this.settingsPreferences = new SettingsPreferences(context);
     }
 
     @Override
@@ -88,21 +87,21 @@ public class CardAdapter extends BaseAdapter implements ImageCallBack {
 
         if (cardMap.get(position) == null) {
             cardMap.put(position, new Card(holder.image, position));
-            imageWidget.showImageView(holder.image, position);
+            revealImage(holder.image, position);
             imageWidgets.add(imageWidget);
         } else if (cardMap.get(position) != null) {
             imageWidgets.add(imageWidget);
-            imageWidget.showImageView(holder.image, position);
+            revealImage(holder.image, position);
         }
 
         holder.image.setOnClickListener(imageWidget);
         holder.image.setEnabled(false);
         if (position == (getCount() - 1)) {
-            if (!settingsPreferences.isShowCaseAppeared()) {
+            if (!getSettingsPreferences().isShowCaseAppeared()) {
                 cardGameSpanViewAction.runShowCase();
-                settingsPreferences.disableShowCaseAppearance();
+                getSettingsPreferences().disableShowCaseAppearance();
             } else {
-                flipDownCards(imageWidget);
+                flipDownCards();
             }
 
 
@@ -114,7 +113,7 @@ public class CardAdapter extends BaseAdapter implements ImageCallBack {
         return cardPositionMap;
     }
 
-    public void flipDownCards(final ImageWidget imageWidget) {
+    public void flipDownCards() {
         cardGameSpanViewAction.showRefresh(new Runnable() {
             @Override
             public void run() {
@@ -122,7 +121,7 @@ public class CardAdapter extends BaseAdapter implements ImageCallBack {
                 for (int key : cardMap.keySet()) {
                     ImageView imageView = cardMap.get(key).getImageView();
                     imageView.setEnabled(true);
-                    imageWidget.showDeafaultImage(imageView);
+                    flipDownImage(imageView);
                 }
                 cardGameSpanViewAction.dismissedRefresh();
             }
@@ -147,14 +146,34 @@ public class CardAdapter extends BaseAdapter implements ImageCallBack {
         cardGameSpanViewAction.updateScoreBoard(String.valueOf(score));
         if (isGameEnded()) {
             cardGameSpanViewAction.showUserInputDialog(score);
+        } else {
+            allowFutureClick(true);
         }
-        allowFutureClick(true);
+
     }
 
     @Override
     public void allowFutureClick(boolean allow) {
         for (ImageWidget imageWidget : imageWidgets) {
             imageWidget.setAllowFutureClick(allow);
+        }
+    }
+
+    @Override
+    public void revealImage(ImageView imageView, int index) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            imageView.setImageDrawable(context.getDrawable(cardPositionMap.get(index)));
+        } else {
+            imageView.setImageDrawable(context.getResources().getDrawable(cardPositionMap.get(index)));
+        }
+    }
+
+    @Override
+    public void flipDownImage(ImageView imageView) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            imageView.setImageDrawable(context.getDrawable(R.drawable.card_bg));
+        } else {
+            imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.card_bg));
         }
     }
 
@@ -166,6 +185,14 @@ public class CardAdapter extends BaseAdapter implements ImageCallBack {
     public List<ImageWidget> getImageWidgets() {
         return imageWidgets;
     }
+
+    public SettingsPreferences getSettingsPreferences() {
+        if (settingsPreferences == null) {
+            this.settingsPreferences = new SettingsPreferences(context);
+        }
+        return settingsPreferences;
+    }
+
 
     class ViewHolder {
         @BindView(R.id.image)

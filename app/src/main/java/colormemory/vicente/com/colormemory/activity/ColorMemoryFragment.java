@@ -28,7 +28,6 @@ import colormemory.vicente.com.colormemory.model.ScoreViewModel;
 import colormemory.vicente.com.colormemory.util.AlertManager;
 import colormemory.vicente.com.colormemory.view.CardContract;
 import colormemory.vicente.com.colormemory.view.Navigator;
-import colormemory.vicente.com.colormemory.widget.ImageWidget;
 import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 
@@ -94,13 +93,15 @@ public class ColorMemoryFragment extends Fragment implements CardContract.GameSp
     @Override
     public void onResume() {
         super.onResume();
-        colorFragView.setRefreshing(false);
-        colorFragView.post(new Runnable() {
-            @Override
-            public void run() {
-                colorFragView.setRefreshing(true);
-            }
-        });
+        if (cardAdapter.getSettingsPreferences().isShowCaseAppeared()) {
+            colorFragView.setRefreshing(false);
+            colorFragView.post(new Runnable() {
+                @Override
+                public void run() {
+                    colorFragView.setRefreshing(true);
+                }
+            });
+        }
     }
 
     @Override
@@ -143,8 +144,8 @@ public class ColorMemoryFragment extends Fragment implements CardContract.GameSp
     public void showRefresh(Runnable runnable) {
         this.resetCardRunnable = runnable;
         handler.postDelayed(resetCardRunnable, 5000);
-        scoreView.updateScore(MessageFormat.format(getString(R.string.score), 0));
-        Toast.makeText(getActivity(), getString(R.string.progress_message), Toast.LENGTH_LONG).show();
+        scoreView.updateScore(MessageFormat.format(context.getString(R.string.score), 0));
+        Toast.makeText(context, context.getString(R.string.progress_message), Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -174,9 +175,7 @@ public class ColorMemoryFragment extends Fragment implements CardContract.GameSp
                     @Override
                     public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView) {
                         scoreView.runShowCase();
-                        if(cardAdapter.getImageWidgets() != null && !cardAdapter.getImageWidgets().isEmpty()){
-                            cardAdapter.flipDownCards(cardAdapter.getImageWidgets().get(0));
-                        }
+                        cardAdapter.flipDownCards();
                     }
                 })
                 .show();

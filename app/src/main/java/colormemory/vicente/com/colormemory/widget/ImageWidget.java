@@ -88,14 +88,14 @@ public class ImageWidget implements View.OnClickListener, Animation.AnimationLis
 
             if (currentCard != null && (currentCard.isCardInitialyClick()) && isAllowFutureClick()) {
                 //shows the first cardPositionMap
-                showImageView(currentCard.getImageView(), currentPosition);
+                imageCallBack.revealImage(currentCard.getImageView(), currentPosition);
             } else if (currentCard != null && (!currentCard.isCardInitialyClick() && !isAllowFutureClick())) {
                 //shows the second cardPositionMap
-                showImageView(currentCard.getImageView(), currentPosition);
+                imageCallBack.revealImage(currentCard.getImageView(), currentPosition);
             } else if (previousCard != null && (!previousCard.isVisible())) {
                 //if both cardPositionMap are not equal
-                showDeafaultImage(previousCard.getImageView());
-                showDeafaultImage(currentCard.getImageView());
+                imageCallBack.flipDownImage(previousCard.getImageView());
+                imageCallBack.flipDownImage(currentCard.getImageView());
                 previousCard.getImageView().clearAnimation();
                 previousCard.getImageView().setAnimation(backAnimation);
                 previousCard.getImageView().startAnimation(backAnimation);
@@ -172,21 +172,7 @@ public class ImageWidget implements View.OnClickListener, Animation.AnimationLis
         imageView.startAnimation(frontAnimation);
     }
 
-    public void showDeafaultImage(ImageView imageView) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            imageView.setImageDrawable(context.getDrawable(R.drawable.card_bg));
-        } else {
-            imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.card_bg));
-        }
-    }
 
-    public void showImageView(ImageView imageView, int index) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            imageView.setImageDrawable(context.getDrawable(getCardPosition().get(index)));
-        } else {
-            imageView.setImageDrawable(context.getResources().getDrawable(getCardPosition().get(index)));
-        }
-    }
 
     public boolean isAllowFutureClick() {
         return allowFutureClick;
