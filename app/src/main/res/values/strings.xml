@@ -9,6 +9,7 @@
     <string name="high_score_rank">Rank</string>
     <string name="high_score_name">Name</string>
     <string name="score">Score : {0}</string>
+    <string name="score_board">Score</string>
     <string name="high_score">High Score</string>
     <string name="progress_message">Game Will Start Shortly. Good Luck!</string>
 

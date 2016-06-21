@@ -42,7 +42,7 @@
             android:layout_weight=".20"
             android:textColor="@color/cardview_light_background"
             android:gravity="center"
-            android:text="@string/score"
+            android:text="@string/score_board"
             android:textSize="20sp"
             android:textStyle="bold" />
 
