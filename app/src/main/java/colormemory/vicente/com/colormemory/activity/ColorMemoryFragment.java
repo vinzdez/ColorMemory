@@ -93,15 +93,13 @@ public class ColorMemoryFragment extends Fragment implements CardContract.GameSp
     @Override
     public void onResume() {
         super.onResume();
-        if (cardAdapter.getSettingsPreferences().isShowCaseAppeared()) {
-            colorFragView.setRefreshing(false);
-            colorFragView.post(new Runnable() {
-                @Override
-                public void run() {
-                    colorFragView.setRefreshing(true);
-                }
-            });
-        }
+        colorFragView.setRefreshing(false);
+        colorFragView.post(new Runnable() {
+            @Override
+            public void run() {
+                colorFragView.setRefreshing(true);
+            }
+        });
     }
 
     @Override

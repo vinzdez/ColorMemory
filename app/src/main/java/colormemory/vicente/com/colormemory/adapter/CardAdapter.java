@@ -98,6 +98,7 @@ public class CardAdapter extends BaseAdapter implements ImageCallBack {
         holder.image.setEnabled(false);
         if (position == (getCount() - 1)) {
             if (!getSettingsPreferences().isShowCaseAppeared()) {
+                cardGameSpanViewAction.dismissedRefresh();
                 cardGameSpanViewAction.runShowCase();
                 getSettingsPreferences().disableShowCaseAppearance();
             } else {

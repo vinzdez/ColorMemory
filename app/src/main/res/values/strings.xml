@@ -15,9 +15,9 @@
 
     <!-- Show Case -->
     <string name="got_it">Got It!</string>
-    <string name="intro">You are given 5 seconds to remember the figure and position of cards.Match the cards by clicking its respective pair.Swipe down to shuffle the cards</string>
-    <string name="intro_score">If the two cards match, you get 2 points. If you get the wrong pair, 1 point will be deducted from your current points.</string>
-    <string name="intro_score_board">Score Board , Have fun :)</string>
+    <string name="intro"> - You are given 5 seconds to remember the figure and position of cards.\n - Match the cards by clicking its respective pair.\n - Swipe down to shuffle the cards</string>
+    <string name="intro_score">- If the two cards match, you get 2 points.\n - If you get the wrong pair, 1 point will be deducted from your current points.</string>
+    <string name="intro_score_board">- Score Board , Have fun :)</string>
 
 
 </resources>
