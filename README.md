@@ -10,8 +10,6 @@ If you get the wrong pair, 1 point will be deducted from your current points.
 
 You can swipe down to shuffle the cards.
 
-#GOOD LUCK!!!!!
-
 #LINKS
  - Material Showcase  [https://github.com/deano2390/MaterialShowcaseView] 
  - Android Architecture Blueprints [https://github.com/googlesamples/android-architecture]
