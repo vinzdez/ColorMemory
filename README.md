@@ -1,8 +1,18 @@
 # ColorMemory
-Color Memory Challenge is a memory game where you need to find the exact first image you selected.
+Color Memory Challenge is a color & shape challenge.
 
-Note: A correct combination gives you 2pts and a wrong combination deducts 1point from your score. Can you Score more than one? 
+#How Good Is Your Memory?
 
-How to play
-- Flip one card
-- Find the exact image
+You are given 5 seconds to remember the figure and position of cards.
+Match the cards by clicking its respective pair.
+If the two cards match, you get 2 points.
+If you get the wrong pair, 1 point will be deducted from your current points.
+
+You can swipe down to shuffle the cards.
+
+#GOOD LUCK!!!!!
+
+#LINKS
+ - Material Showcase  [https://github.com/deano2390/MaterialShowcaseView] 
+ - Android Architecture Blueprints [https://github.com/googlesamples/android-architecture]
+
